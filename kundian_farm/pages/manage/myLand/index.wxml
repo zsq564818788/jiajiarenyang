@@ -1,0 +1,82 @@
+<view>
+    <view class="container">
+        <view class="flexSa mt30">
+            <view>
+                <view class="title_name" style="color:{{config.background_color}}">{{animalOrder.count}}</view>
+                <view class="title_desc">当前数量</view>
+            </view>
+            <view>
+                <view class="title_name" style="color:{{config.background_color}}">{{animalOrder.create_time}}</view>
+                <view class="title_desc">认养时间</view>
+            </view>
+        </view>
+        <view class="orderInfo_container" style="border-top:1rpx dashed {{config.background_color}};border-bottom:1rpx dashed {{config.background_color}}">
+            <view class="flex mt30">
+                <view class="head">订单状态</view>
+                <view>已支付</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">订单号</view>
+                <view>{{animalOrder.order_number}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">商户订单号</view>
+                <view>{{animalOrder.uniontid}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系人</view>
+                <view>{{animalOrder.username}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系号码</view>
+                <view>{{animalOrder.phone}}</view>
+            </view>
+        </view>
+        <view class="seed_container">
+            <view class="seed_title">认养列表</view>
+            <view class="seed_container" wx:for="{{adoptData}}" wx:key="id">
+                <view class="seed-info flex">
+                    <view class="info-title">认养名称</view>
+                    <view class="info-value">{{item.animalData.animal_name}}</view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">认养价格</view>
+                    <view class="info-value">{{item.animalData.price}}</view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">认养时间</view>
+                    <view class="info-value">{{item.adopt_time}}</view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">认养天数</view>
+                    <view class="info-value">{{item.adopt_day}}天</view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">当前状态</view>
+                    <view class="info-value">{{item.status_txt}}</view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">认养编号</view>
+                    <view class="info-value">
+                        <input bindblur="updateAdoptNumber" data-adoptid="{{item.id}}" name="adopt_number" value="{{item.adopt_number}}"></input>
+                    </view>
+                </view>
+                <view class="seed-info flex">
+                    <view class="info-title">预计成熟时间</view>
+                    <view class="info-value">{{item.predict_ripe}}</view>
+                </view>
+                <view class="seed-btn flex">
+                    <view bindtap="changeAdoptStstua" class="seed-status" data-adoptid="{{item.id}}" data-status="2" data-statustxt="认养中" style="color:{{config.background_color}};border:1rpx solid {{config.background_color}}" wx:if="{{item.status==1||item.status==3}}">认养中</view>
+                    <view bindtap="changeAdoptStstua" class="seed-status" data-adoptid="{{item.id}}" data-status="4" data-statustxt="已成熟" style="color:{{config.background_color}};border:1rpx solid {{config.background_color}}" wx:if="{{item.status==2}}">已成熟</view>
+                    <view bindtap="changeAdoptStstua" class="seed-status" data-adoptid="{{item.id}}" data-status="3" data-statustxt="已死亡" style="color:{{config.background_color}};border:1rpx solid {{config.background_color}}" wx:if="{{item.status==2}}">已死亡</view>
+                    <view bindtap="sendAdoptTemplateToUser" class="seed-status" data-adoptid="{{item.id}}" data-statustxt="{{item.status_txt}}" style="color:{{config.background_color}};border:1rpx solid {{config.background_color}}">通知</view>
+                    <view bindtap="releases" class="seed-status" data-adoptid="{{item.id}}" style="color:{{config.background_color}};border:1rpx solid {{config.background_color}}">
+                        <text class="iconfont icon-add3 f30" style="color:{{config.background_color}}"></text>
+                    状态跟踪
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>

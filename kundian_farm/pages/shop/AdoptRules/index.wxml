@@ -1,0 +1,94 @@
+<import src="../../../../wxParse/wxParse.wxml"></import>
+<view>
+    <view class="banner" wx:if="{{cuIndex==-1}}">
+        <swiper autoplay="{{autoplay}}" class="swiper" duration="{{duration}}" indicatorActiveColor="#000" indicatorColor="#7f7f7f" indicatorDots="true" interval="{{interval}}">
+            <swiper-item wx:for="{{animalData.animal_slide}}" wx:key="id">
+                <image bindtap="ceshi" class="slide-image" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="adopt-video" wx:else>
+        <live-player autoplay="false" binderror="error" bindfullscreenchange="full" bindstatechange="statechange" class="live-play" mode="live" src="{{live[cuIndex].cu_src}}" wx:if="{{live[cuIndex].play_type==1}}"></live-player>
+        <video autoplay showMuteBtn bindplay="play" class="video" poster="{{farmSetData.loading_icon}}" src="{{live[cuIndex].cu_src}}" wx:if="{{live[cuIndex].play_type==0}}"></video>
+    </view>
+    <scroll-view scrollWithAnimation scrollX class="bg-white cu-li" scrollLeft="{{scrollLeft}}" wx:if="{{live.length>0}}">
+        <view class="nav text-center">
+            <view bindtap="changeCu" class="cu-tag round {{cuIndex==-1?'bg-blue':''}}" data-cuindex="-1" style="background:{{cuIndex==-1?bgColor:''}}">图片</view>
+            <view bindtap="changeCu" class="cu-tag round {{cuIndex==index?'bg-blue':''}}" data-cuindex="{{index}}" style="background:{{cuIndex==index?bgColor:''}}" wx:for="{{live}}">{{item.title}}监控</view>
+        </view>
+    </scroll-view>
+    <view class="details">
+        <view class="detailsName">{{animalData.animal_name}}</view>
+        <view class="describe">{{animalData.animal_desc}}</view>
+        <view class="price flex">
+            <view>
+                <text class="line20">￥</text>
+                <text class="fb">{{animalData.price}}</text>
+            </view>
+            <view class="limit" wx:if="{{animalData.limit_purchase>0}}">限购{{animalData.limit_purchase}}{{animalData.unit}}</view>
+            <view class="limit" wx:else>不限购</view>
+        </view>
+        <view class="price-desc text-grey">价格说明：{{animalData.price_desc}}</view>
+    </view>
+    <view class="block20"></view>
+    <scroll-view scrollX class="bg-white nav text-center">
+        <view bindtap="chengeIndex" class="cu-item {{index==1?'cur':''}}" data-index="1" style="color:{{index==1?bgColor:''}};">
+            认养详情
+        </view>
+        <view bindtap="chengeIndex" class="cu-item {{index==2?'cur':''}}" data-index="2" style="color:{{index==2?bgColor:''}};">
+            认养收获
+        </view>
+    </scroll-view>
+    <view class="proImgs" hidden="{{index==2}}">
+        <view class="wxParse">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+        </view>
+    </view>
+    <view class="proImgs" hidden="{{index==1}}" style="margin-bottom:100rpx;">
+        {{animalData.gain_desc}}
+    </view>
+    <view style="height:{{100+bottom}}rpx"></view>
+    <view class="footer cu-bar bg-white tabbar border shop" style="padding-bottom:{{bottom}}rpx">
+        <view bindtap="goHome" class="action">
+            <view class=" iconfont icon-index f44"></view> 首页
+        </view>
+        <button class="action" openType="contact" sendMessageImg="{{kefu.cover}}" sendMessagePath="{{kefu.url}}" sendMessageTitle="{{kefu.title}}" showMessageCard="true" style="color:gray">
+            <text class="iconfont icon-server f44"></text> 客服
+        </button>
+        <view bindtap="doCall" class="action" data-phone="{{aboutData.phone}}">
+            <text class="iconfont icon-tel f44"></text> 电话
+        </view>
+        <view class="btn-group">
+            <button bindtap="showMode" class="cu-btn bg-green round shadow-blur" style="background: linear-gradient(to right, {{bgColor}}, {{assistColor}});">立即认养</button>
+        </view>
+    </view>
+    <view bindtap="hideModal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{state}}"></view>
+    <view class="modal-dialog" wx:if="{{state}}">
+        <view class="flex proImgs">
+            <view class="adoptImg">
+                <image mode="aspectFill" src="{{specVal.spec_src}}" wx:if="{{specVal.spec_src}}"></image>
+                <image mode="aspectFill" src="{{animalData.animal_src}}" wx:else></image>
+            </view>
+            <view class="adoptPrice">
+                <view class="cffc8535" style="color:{{bgColor}}">
+                    <text class="danwei">￥</text>
+                    <text class="ml20" wx:if="{{specVal.price}}">{{specVal.price}}</text>
+                    <text class="ml20" wx:else>{{animalData.price}}</text>
+                </view>
+                <view class="chooseTime">
+                    <text class="ml20">库存:{{animalData.count}}</text>
+                    <text class="ml20">销量:{{animalData.sale_count}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="chooseNum">
+            <view class="flex plt30" style="margin-top:20rpx;">
+                <view class="f32" style="width:63%;">认购数量</view>
+                <view catchtap="reduceNum" class="chooseN clickNumLift ml50">-</view>
+                <input bindinput="chooseNum" class="chooseN" type="number" value="{{count}}"></input>
+                <view catchtap="addNum" class="chooseN clickNumRight">+</view>
+            </view>
+        </view>
+        <view bindtap="sureAnimal" class="confrim cu-btn round bg-green" style="background: linear-gradient(to right, {{bgColor}}, {{assistColor}});;width:94%">确定</view>
+    </view>
+</view>

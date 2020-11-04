@@ -1,0 +1,59 @@
+<scroll-view scrollX class="bg-white nav">
+    <view class="flex text-center">
+        <view bindtap="tabSelect" class="cu-item flex-sub {{index==1?'text-green cur':''}}" data-id="1" style="color:{{index==1?bgColor:''}}">
+            全部
+        </view>
+        <view bindtap="tabSelect" class="cu-item flex-sub {{index==2?'text-green cur':''}}" data-id="2" style="color:{{index==2?bgColor:''}}">
+            进行中
+        </view>
+        <view bindtap="tabSelect" class="cu-item flex-sub {{index==3?'text-green cur':''}}" data-id="3" style="color:{{index==3?bgColor:''}}">
+            种植中
+        </view>
+        <view bindtap="tabSelect" class="cu-item flex-sub {{index==4?'text-green cur':''}}" data-id="4" style="color:{{index==4?bgColor:''}}">
+            已完成
+        </view>
+    </view>
+</scroll-view>
+<view style="width:100%;height:100rpx;"></view>
+<view class="cond" wx:if="{{isContent}}">
+    <view bindtap="toDetail" class="land-info shadow-warp" data-id="{{v.id}}" wx:for="{{list}}" wx:for-item="v">
+        <view class="expire bg-grey light" wx:if="{{v.is_confirm==1}}">已完成</view>
+        <view class="expire bg-orange light" wx:if="{{v.order_type==3&&v.is_confirm==0}}">进行中</view>
+        <view class="expire bg-green light" wx:if="{{v.order_type==4&&v.is_confirm==0}}">种植中</view>
+        <view class="user-info">
+            <image src="{{v.user.avatarurl}}"></image>
+            <text>{{v.user.nickname}}</text>
+        </view>
+        <view bindtap="intoLandDetail" class="land flex" data-mineid="{{item.id}}">
+            <image class="land-img" src="{{v.land.cover}}"></image>
+            <view class="ml30">
+                <view class="land-name">{{v.land.land_name}}</view>
+                <view class="mt30">
+                    <text>{{v.spec.land_num}}</text>
+                    <text class="ml30">{{v.spec.area}}㎡</text>
+                </view>
+            </view>
+        </view>
+        <view class="state_container">
+            <view class="item_container">
+                <view class="text-gray">状态</view>
+                <view class="mt20 f30" style="color:{{bgColor}}" wx:if="{{v.is_confirm==1}}">已完成</view>
+                <view class="mt20 f30" style="color:{{bgColor}}" wx:if="{{v.order_type==3&&v.is_confirm==0}}">进行中</view>
+                <view class="mt20 f30" style="color:{{bgColor}}" wx:if="{{v.order_type==4&&v.is_confirm==0}}">种植中</view>
+            </view>
+            <view class="item_container">
+                <view class="text-gray">开始日期</view>
+                <view class="mt20 f30">{{v.create_time}}</view>
+            </view>
+            <view class="item_container">
+                <view class="text-gray">到期日期</view>
+                <view class="mt20 f30">{{v.deadline}}</view>
+            </view>
+        </view>
+    </view>
+    <view style="width:100%;height:100rpx;"></view>
+</view>
+<view class="none" wx:else>
+    <image src="../../../images/icon/none.png"></image>
+    <text class="tags">您还没有相关的订单</text>
+</view>

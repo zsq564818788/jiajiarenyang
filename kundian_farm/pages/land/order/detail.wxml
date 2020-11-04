@@ -1,0 +1,109 @@
+<view class="order-status">
+    <view class="bg-white padding">
+        <view class="cu-steps">
+            <view class="cu-item text-gray" style="color:{{bgColor}}">
+                <text class="num-1 num-blue" data-index="1" style="background:{{bgColor}}">1</text> 下单
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1?'num-blue':''}}" data-index="2" style="background:{{order.status==1?bgColor:''}}">2</text> 付款
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1?'num-blue':''}}" data-index="3" style="background:{{order.status==1?bgColor:''}}">3</text> 进行中
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1&&order.is_confirm==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1&&order.is_confirm==1?'num-blue':''}}" data-index="4" style="background:{{order.status==1&&order.is_confirm==1?bgColor:''}}">4</text> 已完成
+            </view>
+        </view>
+    </view>
+</view>
+<view class="land-info">
+    <view bindtap="toCycle" class="cycle-title flex">
+        <view class="cycle-left">
+            <text class="iconfont icon-time"></text> 查看每期详情
+        </view>
+        <view class="cycle-right text-red">
+            剩余{{cycle_count}}期
+            <text class="iconfont icon-right f28"></text>
+        </view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">第{{cycle.cycle}}期</view>
+        <view wx:if="{{cycle.status==0}}">未开始</view>
+        <view wx:if="{{cycle.status==1}}">进行中</view>
+        <view wx:if="{{cycle.status==2}}">已完成</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递公司</view>
+        <view wx:if="{{cycle.status==0}}">未发货</view>
+        <view wx:else>{{cycle.express_company}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递单号</view>
+        <view wx:if="{{cycle.status==0}}">未发货</view>
+        <view wx:else>{{cycle.express_no}}</view>
+    </view>
+</view>
+<view class="land-info">
+    <view class="title">
+        <text class="iconfont icon-lanmanbiaoti"></text> 土地信息
+    </view>
+    <view class="land-cond">
+        <image bindtap="showVideo" class="monitor" src="../../../images/icon/monitor.png"></image>
+        <image class="cover" hidden="{{showVideo}}" src="{{land.cover}}"></image>
+        <view style="display:{{showVideo?'block':'none'}}">
+            <video autoplay="true" bindwaiting="watering" controls="false" eventModel="bubble" id="myVideo" poster="{{config.loading_icon}}" src="{{spec.live_src}}" wx:if="{{src_xy[0]=='http'||src_xy[0]=='https'}}"></video>
+            <live-player autoplay="false" backgroundMute="true" binderror="error" bindfullscreenchange="full" bindstatechange="statechange" class="live-play" mode="live" src="{{spec.live_src}}" wx:if="{{src_xy[0]=='rtmp'}}"></live-player>
+        </view>
+        <view class="l-mask" wx:if="{{spec.is_open_webthing==1}}">
+            温度：{{spec.device.temp}}℃ 湿度：{{spec.device.watering}}% 光照：{{spec.device.illumination}} 二氧化碳：{{spec.device.co2}}
+        </view>
+        <view class="l-mask" wx:if="{{spec.is_open_webthing==2}}">
+            温度：{{land.device.temp.DevTempValue}}℃ 湿度：{{land.device.temp.DevHumiValue}}% 光照：{{land.device.light.DevHumiValue}} 二氧化碳：{{spec.device.co2.DevHumiValue}}
+        </view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">土地名称</view>
+        <view>{{land.land_name}}（{{spec.land_num}}）</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">面积</view>
+        <view>{{spec.area}}㎡ 共{{order.delivery_time}}期</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">预计到期时间：</view>
+        <view>{{order.deadline}}</view>
+    </view>
+</view>
+<view class="land-info">
+    <view class="title">
+        <text class="iconfont icon-lanmanbiaoti"></text> 订单信息</view>
+    <view class="order-ul flex">
+        <view class="text-gray">订单编号</view>
+        <view>{{order.order_number}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">创建时间</view>
+        <view>{{order.create_time}}</view>
+    </view>
+    <view class="land-li flex" wx:if="{{order.discount>0}}">
+        <view class="title">会员折扣</view>
+        <view class="land-v">￥{{order.discount}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">订单总价</view>
+        <view>￥{{order.total_price}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">支付时间</view>
+        <view>{{order.pay_time}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">支付方式</view>
+        <view>{{order.pay_method}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">商户订单号</view>
+        <view>{{order.uniontid}}</view>
+    </view>
+</view>
+<view style="width:100%;height:100rpx;"></view>

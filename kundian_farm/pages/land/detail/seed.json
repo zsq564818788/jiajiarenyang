@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "选择种子",
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom"
+    }
+}

@@ -1,0 +1,228 @@
+<import src="../../../../wxParse/wxParse.wxml"></import>
+<view>
+    <view class="banner" style="display:{{isShow?'block':'none'}}">
+        <image class="slide-cover" src="{{land.cover}}" style="display:{{isShow?'block':'none'}}"></image>
+        <image bindtap="hideVideo" class="monitor" src="../../../images/icon/monitor.png" style="display:{{isShow?'block':'none'}}"></image>
+    </view>
+    <view class="land-video" style="display:{{isShow?'none':'block'}}">
+        <image bindtap="hideVideo" class="monitor-img" src="../../../images/icon/monitor.png"></image>
+        <live-player autoplay="false" binderror="error" bindfullscreenchange="full" bindstatechange="statechange" class="live-play" mode="live" src="{{land.live_src}}" wx:if="{{land.play_type==1}}"></live-player>
+        <video showMuteBtn autoplay="true" controls="false" eventModel="bubble" id="myVideo" poster="{{farmSetData.loading_icon}}" src="{{land.live_src}}" tyle="display:{{isShow?'none':'block'}}" wx:if="{{land.play_type==0}}"></video>
+    </view>
+    <view class="land_info">
+        <view class="land_name">{{land.land_name}}</view>
+        <view class="land_ares text-grey">
+            <view>{{land.land_intro}}</view>
+        </view>
+    </view>
+    <view class="select_lands">
+        <view class="land_status">
+            <view class="flex">
+                <view class="land_status_view">
+                    <image src="{{icon.selectLand1}}"></image>
+                    <view></view>
+                </view>可选
+            </view>
+            <view class="flex">
+                <view class="land_status_view">
+                    <image src="{{icon.selectLand1}}"></image>
+                </view>选中
+            </view>
+            <view class="flex">
+                <view class="land_status_view"></view>已租
+            </view>
+        </view>
+        <scroll-view class="land_list" scrollX="true">
+            <view class="list_item" wx:for="{{spec}}" wx:key="index">
+                <view class="title_wrapper" wx:if="{{item.status==1}}">
+                    <image src="{{icon.hsdSelelct}}" wx:if="{{item.status==1}}"></image>
+                    <image src="{{icon.selectLand1}}" wx:else></image>
+                    <view class="land_model" wx:if="{{!item.select&&!item.hadselect}}"></view>
+                    <view class="title_model" wx:if="{{item.name}}">
+                        <view>{{item.area}}</view>
+                        <view>m²</view>
+                        <view>{{item.name[0]}}</view>
+                        <view>{{item.name[1]}}</view>
+                        <view>{{item.name[2]}}</view>
+                        <view>{{item.name[3]}}</view>
+                    </view>
+                    <view class="title_model" wx:else>
+                        <view>{{item.area}}</view>
+                        <view> m²</view>
+                        <view>地</view>
+                        <view>块</view>
+                    </view>
+                </view>
+                <view class="title_wrapper" wx:if="{{item.status==2}}">
+                    <image src="{{icon.hsdSelelct}}" wx:if="{{item.status==2}}"></image>
+                    <image src="{{icon.selectLand1}}" wx:else></image>
+                    <view class="land_model" wx:if="{{!item.select&&!item.hadselect}}"></view>
+                    <view class="title_model">
+                        <view>已</view>
+                        <view>锁</view>
+                        <view>定</view>
+                    </view>
+                </view>
+                <view bindtap="select" class="title_wrapper" data-id="{{item.id}}" wx:if="{{item.status==0}}">
+                    <image src="{{icon.hsdSelelct}}" wx:if="{{item.status==1}}"></image>
+                    <image src="{{icon.selectLand1}}" wx:else></image>
+                    <view class="land_model" wx:if="{{!item.select&&!item.hadselect}}"></view>
+                    <view class="title_model" wx:if="{{item.name}}">
+                        <view>{{item.area}}</view>
+                        <view> m²</view>
+                        <view>{{item.name[0]}}</view>
+                        <view>{{item.name[1]}}</view>
+                        <view>{{item.name[2]}}</view>
+                        <view>{{item.name[3]}}</view>
+                    </view>
+                    <view class="title_model" wx:else>
+                        <view>{{item.area}}</view>
+                        <view>m²</view>
+                        <view>地</view>
+                        <view>块</view>
+                    </view>
+                </view>
+                <radio color="#77d682" style="visibility:hidden" wx:if="{{item.status==1}}"></radio>
+                <radio color="#77d682" style="visibility:hidden" wx:if="{{item.status==2}}"></radio>
+                <block wx:if="{{item.status==0}}">
+                    <radio catchtap="select" checked="{{item.select}}" color="#77d682" data-id="{{item.id}}" wx:if="{{item.status}}"></radio>
+                    <radio checked="{{item.select}}" color="#77d682" style="visibility:hidden" wx:else></radio>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="block"></view>
+    <view class="fun_info cu-list menu text-left" wx:if="{{land.sow_status==1}}">
+        <view class="fun_title">配送说明</view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-grey">预计到期时间</text>
+                <text bindtap="showDeadline" class="iconfont icon-issue text-grey"></text>
+            </view>
+            <view class="action">
+                {{land.deadline}}
+            </view>
+        </view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-grey">至少配送次数</text>
+                <text bindtap="showdeliveryTime" class="iconfont icon-issue text-grey"></text>
+            </view>
+            <view class="action">
+                {{land.delivery_time}} 次
+            </view>
+        </view>
+    </view>
+    <view class="block" wx:if="{{land.sow_status==1}}"></view>
+    <view class="fun_info" wx:if="{{device}}">
+        <view class="fun_title">实时数据</view>
+        <view class="situation" wx:if="{{farmSetData.is_open_webthing==1}}">
+            <view>
+                <image class="humidity" src="{{icon.humidity}}"></image>
+                <view class="mt5">{{device.watering}}%</view>
+                <view class="cf888789 mt5">水份</view>
+            </view>
+            <view>
+                <image class="temperature" src="{{icon.temperature}}"></image>
+                <view class="mt5">{{device.temp}}℃</view>
+                <view class="cf888789 mt5">温度</view>
+            </view>
+            <view>
+                <image class="co2" src="{{icon.co2}}"></image>
+                <view class="mt5">{{device.co2}}ppm</view>
+                <view class="cf888789 mt5">二氧化碳</view>
+            </view>
+            <view>
+                <image class="Illumination" src="{{icon.Illumination}}"></image>
+                <view class="mt5">{{device.illumination}}lux</view>
+                <view class="cf888789 mt5">光照</view>
+            </view>
+        </view>
+        <view class="situation" wx:if="{{farmSetData.is_open_webthing==2}}">
+            <view wx:if="{{device.temp}}">
+                <image class="humidity" src="{{icon.humidity}}"></image>
+                <view class="mt5">{{device.temp.DevHumiValue}}</view>
+                <view class="cf888789 mt5">{{device.temp.DevHumiName}}</view>
+            </view>
+            <view wx:if="{{device.temp}}">
+                <image class="temperature" src="{{icon.temperature}}"></image>
+                <view class="mt5">{{device.temp.DevTempValue}}</view>
+                <view class="cf888789 mt5">{{device.temp.DevTempName}}</view>
+            </view>
+            <view wx:if="{{device.co2}}">
+                <image class="co2" src="{{icon.co2}}"></image>
+                <view class="mt5">{{device.co2.DevHumiValue}}</view>
+                <view class="cf888789 mt5">{{device.co2.DevHumiName}}</view>
+            </view>
+            <view wx:if="{{device.light}}">
+                <image class="Illumination" src="{{icon.Illumination}}"></image>
+                <view class="mt5">{{device.light.DevHumiValue}}</view>
+                <view class="cf888789 mt5">{{device.light.DevHumiName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="fun_info" wx:if="{{seed.length>0}}">
+        <view class="fun_title">可种植作物</view>
+        <view class="pro_wrapper">
+            <view bindtap="intoSeedDetail" class="pro_item" data-sid="{{item.id}}" wx:for="{{seed}}" wx:key="index">
+                <image src="{{item.cover}}"></image>
+                <view class="proName">{{item.send_name}}</view>
+                <view class="yuji">预估产量</view>
+                <view>{{item.output}}/㎡</view>
+            </view>
+        </view>
+    </view>
+    <view class="block"></view>
+    <view class="content" style="width:96%;margin-left:2%;">
+        <view class="wxParse">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+        </view>
+    </view>
+    <view style="height:{{100+bottom}}rpx"></view>
+    <view class="footer_wrapper" style="padding-bottom:{{bottom}}rpx">
+        <view class="footer">
+            <view class="shopCar">
+                <view class="price">合计：{{total_price}}元起</view>
+                <view class="land-num" wx:if="{{land_num}}">编号：{{land_num}}</view>
+            </view>
+            <button bindtap="toPay" class="confrim" style="background: linear-gradient(to right, {{assistColor}}, {{bgColor}});" wx:if="{{uid}}">去结算</button>
+            <button bindgetuserinfo="getAuthUserInfo" class="confrim" openType="getUserInfo" style="background: linear-gradient(to right, {{assistColor}}, {{bgColor}});" wx:if="{{!uid}}">去结算</button>
+        </view>
+    </view>
+</view>
+<view bindtap="returnTop" class="fertilizer {{scrollShow?'position2':'position5'}}" style="color:{{bgColor}};">
+    <view>
+        <text class="iconfont icon-iconfonthuidingbu f44"></text>
+        <view>顶部</view>
+    </view>
+</view>
+<view bindtap="showDeadline" class="cu-modal {{showDeadline?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar justify-end">
+            <view class="content">预计到期时间说明</view>
+            <view bindtap="showDeadline" class="action">
+                <text bindtap="showDeadline" class="iconfont icon-delete1 text-grey"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white deadline-txt">
+            <view>1、预计到期时间不是固定的，只是作为一个参考作用；</view>
+            <view>2、租赁土地成功后，具体到期时间会根据种植作物的生长周期进行相应的调整;</view>
+            <view>3、作物完全成熟并且和相应的配送周期已完全配送完后，租赁土地即为过期；</view>
+        </view>
+    </view>
+</view>
+<view bindtap="showdeliveryTime" class="cu-modal {{showdeliveryTime?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar justify-end">
+            <view class="content">预计到期时间说明</view>
+            <view bindtap="showdeliveryTime" class="action">
+                <text bindtap="showdeliveryTime" class="iconfont icon-delete1 text-grey"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white deadline-txt">
+            <view>1、配送次数不是固定的，至少配送次数是保证当前土地产出作物能够配送的最少次数；</view>
+            <view>2、当前土地产出作物量大时，相应的配送次数和每次配送的量也会随之增加；</view>
+            <view>3、相反，当前土地产出作物量少时，相应的配送次数和配送量也会随之减少；</view>
+        </view>
+    </view>
+</view>

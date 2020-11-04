@@ -1,0 +1,68 @@
+page {
+    background: #f4f4f4;
+}
+
+.ul {
+    background: white;
+    width: 90%;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    margin: auto;
+    margin-top: 10rpx;
+}
+
+.head {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userinfo {
+    width: 100%;
+    padding: 10rpx 0 10rpx 0;
+}
+
+.title {
+    width: 200rpx;
+    color: #868686;
+}
+
+.address {
+    font-size: 26rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user,.express {
+    height: 80rpx;
+    line-height: 80rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    text-align: right;
+}
+
+.cu-form-group picker {
+    flex: none;
+    padding-right: 0;
+}
+
+.cu-form-group .title {
+    width: 140rpx;
+}
+
+.cu-form-group input {
+    font-size: 26rpx;
+    text-align: right;
+}
+
+.icon-yiwancheng {
+    position: absolute;
+    font-size: 100rpx;
+    margin-left: 20%;
+    color: #868686;
+}

@@ -1,0 +1,200 @@
+<view class="cond live-cond shadow">
+    <image bindtap="showVideo" class="monitor" src="../../../images/icon/monitor.png"></image>
+    <image class="cover" hidden="{{showVideo}}" src="{{land.cover}}"></image>
+    <view style="display:{{showVideo?'block':'none'}}">
+        <video autoplay="true" bindwaiting="watering" controls="false" eventModel="bubble" id="myVideo" poster="{{config.loading_icon}}" src="{{spec.live_src}}" wx:if="{{spec.play_type==0}}"></video>
+        <live-player autoplay="false" binderror="error" bindfullscreenchange="full" bindstatechange="statechange" class="live-play" mode="live" src="{{spec.live_src}}" wx:if="{{spec.play_type==1}}"></live-player>
+    </view>
+</view>
+<view class="cond shadow" wx:if="{{spec.device||land.device}}">
+    <view class="head">实时数据</view>
+    <view class="situation" wx:if="{{spec.setData.is_open_webthing==1||spec.setData.is_open_webthing==2}}">
+        <view>
+            <image class="humidity" src="{{icon.humidity}}"></image>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==1}}">{{spec.device.watering}}%</view>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==2}}">{{land.device.temp.DevHumiValue}}%</view>
+            <view class="cf888789 mt5">水份</view>
+        </view>
+        <view>
+            <image class="temperature" src="{{icon.temperature}}"></image>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==1}}">{{spec.device.temp}}℃</view>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==2}}">{{land.device.temp.DevTempValue}}℃</view>
+            <view class="cf888789 mt5">温度</view>
+        </view>
+        <view>
+            <image class="co2" src="{{icon.co2}}"></image>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==1}}">{{spec.device.co2}}ppm</view>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==2}}">{{spec.device.co2.DevHumiValue}}ppm</view>
+            <view class="cf888789 mt5">二氧化碳</view>
+        </view>
+        <view>
+            <image class="Illumination" src="{{icon.Illumination}}"></image>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==1}}">{{spec.device.illumination}}lux</view>
+            <view class="mt5" wx:if="{{spec.setData.is_open_webthing==2}}">{{land.device.light.DevHumiValue}}lux</view>
+            <view class="cf888789 mt5">光照</view>
+        </view>
+    </view>
+</view>
+<view class="cond land-cond">
+    <view class="head">土地信息</view>
+    <view class="land-li flex">
+        <view class="title">土地名称</view>
+        <view class="land-v">{{land.land_name}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">土地编号</view>
+        <view class="land-v">
+            <view class="cu-tag bg-orange light round">{{spec.land_num}}</view>
+            <view class="cu-tag bg-orange light round">{{spec.area}}㎡</view>
+        </view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">预计到期时间</view>
+        <view class="land-v">{{order.deadline}}</view>
+    </view>
+</view>
+<view class="cond land-cond">
+    <view class="head">种植信息</view>
+    <view class="seed-li flex" wx:for="{{order.seed}}" wx:key="index">
+        <image src="{{item.cover}}"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="count">× {{item.area}}㎡</view>
+        <view class="status text-gray" wx:if="{{item.status==0}}">未播种</view>
+        <view class="status text-green" wx:if="{{item.status==1&&item.is_ripe==0}}">种植中</view>
+        <view class="status text-orange" wx:if="{{item.status==1&&item.is_ripe==1}}">已成熟</view>
+        <view bindtap="showSeed" class="detail" data-index="{{index}}">
+            详情
+            <text class="iconfont icon-right"></text>
+        </view>
+    </view>
+</view>
+<view class="cond land-info">
+    <view bindtap="toCycle" class="cycle-title flex">
+        <view class="cycle-left">
+            <text class="iconfont icon-time"></text> 查看每期详情
+        </view>
+        <view class="cycle-right text-red">
+            剩余{{cycle_count}}期
+            <text class="iconfont icon-right f28"></text>
+        </view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">第{{cycle.cycle}}期</view>
+        <view wx:if="{{cycle.status==0}}">未开始</view>
+        <view wx:if="{{cycle.status==1}}">进行中</view>
+        <view wx:if="{{cycle.status==2}}">已完成</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递公司</view>
+        <view wx:if="{{cycle.status==0}}">未发货</view>
+        <view wx:else>{{cycle.express_company}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递单号</view>
+        <view wx:if="{{cycle.status==0}}">未发货</view>
+        <view wx:else>{{cycle.express_no}}</view>
+    </view>
+</view>
+<view class="cond order-cond">
+    <view class="head">订单信息</view>
+    <view class="land-li flex">
+        <view class="title">订单编号</view>
+        <view class="land-v">{{order.order_number}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">下单时间</view>
+        <view class="land-v">{{order.create_time}}</view>
+    </view>
+    <view class="land-li flex" wx:if="{{order.discount>0}}">
+        <view class="title">会员折扣</view>
+        <view class="land-v">￥{{order.discount}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">订单总价</view>
+        <view class="land-v">￥{{order.total_price}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">支付时间</view>
+        <view class="land-v">{{order.pay_time}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">支付方式</view>
+        <view class="land-v">{{order.pay_method}}</view>
+    </view>
+    <view class="land-li flex">
+        <view class="title">商户订单号</view>
+        <view class="land-v">{{order.uniontid}}</view>
+    </view>
+</view>
+<view style="width:100%;height:140rpx;padding-bottom:{{bottom}}rpx"></view>
+<view class="cu-modal {{showSeed?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar justify-end">
+            <view class="content">{{currentSeed.name}}种植详情</view>
+            <view bindtap="showSeed" class="action">
+                <text class="iconfont icon-delete1 text-grey"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white deadline-txt">
+            <view class="s-li flex">
+                <text class="s-head">种植状态</text>
+                <text class="s-v" wx:if="{{currentSeed.status==0}}">未播种</text>
+                <text class="s-v" wx:if="{{currentSeed.status==1&&currentSeed.is_ripe==0}}">种植中</text>
+                <text class="s-v" wx:if="{{currentSeed.status==1&&currentSeed.is_ripe==1}}">已成熟</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">播种时间</text>
+                <text class="s-v" wx:if="{{currentSeed.plant_time}}">{{currentSeed.plant_time}}</text>
+                <text class="s-v" wx:else>未播种</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">种植天数</text>
+                <text class="s-v" wx:if="{{currentSeed.plant_day}}">{{currentSeed.plant_day}}天</text>
+                <text class="s-v" wx:else>0天</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">预计成熟时间</text>
+                <text class="s-v" wx:if="{{currentSeed.ripe_time}}">{{currentSeed.ripe_time}}</text>
+                <text class="s-v" wx:else>未定</text>
+            </view>
+            <view bindtap="toStatus" class="to-info" data-plantid="{{currentSeed.id}}">查看状态信息更新
+                <text class="iconfont icon-right"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="op-web cu-bar tabbar bg-white" style="padding-bottom:{{bottom}}rpx" wx:if="{{spec.setData.is_open_webthing==1&&spec.did}}">
+    <view class="action">
+        <form bindsubmit="controlDevice" data-opreatype="chucao" data-typeindex="2" reportSubmit="true">
+            <button formType="submit" style="line-height:1.5;">
+                <image class="weed" src="{{icon.Weed}}"></image>
+                <view class="text-gray">除草</view>
+            </button>
+        </form>
+    </view>
+    <view class="action">
+        <form bindsubmit="controlDevice" data-opreatype="shachong" data-typeindex="3" reportSubmit="true">
+            <button formType="submit" style="line-height:1.5;">
+                <image class="Insecticide" src="{{icon.Insecticide}}"></image>
+                <view class="text-gray">杀虫</view>
+            </button>
+        </form>
+    </view>
+    <view class="action">
+        <form bindsubmit="controlDevice" data-opreatype="shifei" data-typeindex="1" reportSubmit="true">
+            <button formType="submit" style="line-height:1.5;">
+                <image class="fertilizer" src="{{icon.fertilizer}}"></image>
+                <view class="text-gray">施肥</view>
+            </button>
+        </form>
+    </view>
+    <view class="action">
+        <form bindsubmit="controlDevice" data-opreatype="jiaoshui" data-typeindex="4" reportSubmit="true">
+            <button formType="submit" style="line-height:1.5;">
+                <image class="watering" src="{{icon.watering}}"></image>
+                <view class="text-gray">浇水</view>
+            </button>
+        </form>
+    </view>
+</view>
+<loading wx:if="{{isLoading}}">{{countDownNum}}s后完成,请勿关闭页面！</loading>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "状态信息更新",
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom"
+    }
+}

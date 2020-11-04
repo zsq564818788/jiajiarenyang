@@ -1,0 +1,129 @@
+<scroll-view scrollX class="bg-white nav">
+    <view class="flex text-center">
+        <view bindtap="tabSelect" class="cu-item flex-sub {{navbar==1?'text-green cur':''}}" data-id="1">
+            待支付
+        </view>
+        <view bindtap="tabSelect" class="cu-item flex-sub {{navbar==2?'text-green cur':''}}" data-id="2">
+            种植中
+        </view>
+        <view bindtap="tabSelect" class="cu-item flex-sub {{navbar==3?'text-green cur':''}}" data-id="3">
+            已种植
+        </view>
+        <view bindtap="tabOldVersion" class="cu-item flex-sub">
+            我的土地（旧）
+        </view>
+    </view>
+</scroll-view>
+<view wx:if="{{isContent}}">
+    <view class="to-pay" wx:if="{{navbar==1}}">
+        <view class="pay-ul" wx:for="{{order}}" wx:for-item="v">
+            <view class="title flex">
+                <text>订单编号：{{v.order_number}}</text>
+                <text class="text-red" wx:if="{{v.is_cancel==1}}">已取消</text>
+                <text class="text-red" wx:if="{{v.is_cancel==0&&v.status==0}}">待支付</text>
+            </view>
+            <view class="cont flex">
+                <image src="{{v.land.cover}}"></image>
+                <view class="cont-right">
+                    <view>{{v.land.land_name}}</view>
+                    <view> {{v.spec.land_num}} {{v.spec.area}}㎡ ￥{{v.spec.cost}}</view>
+                    <view wx:if="{{v.order_type==3}}">预计至少配送次数：{{v.delivery_time}}次</view>
+                </view>
+            </view>
+            <view class="seed-cond flex" wx:if="{{v.order_type==4}}" wx:for="{{v.seed}}" wx:for-item="seed">
+                <image src="{{seed.cover}}"></image>
+                <view class="seed-name">{{seed.name}}</view>
+                <view class="seed-price text-gray">￥{{seed.price}} × {{seed.area}}㎡ </view>
+            </view>
+            <view class="pay-price" wx:if="{{v.is_cancel==0}}">
+                <text class="text-grey">请在{{v.min}}分{{v.sec}}秒内支付</text>
+            </view>
+            <view class="pay-price">
+                <text class="text-grey" wx:if="{{v.coupon_price>0}}">总计：￥{{v.total_price}}（优惠券：-￥{{v.coupon_price}}）</text>
+                <text class="text-grey" wx:else>总计：￥{{v.total_price}}</text>
+            </view>
+            <view class="pay-price" wx:if="{{v.is_cancel==0&&v.status==0}}">
+                <view bindtap="orderCancel" class="cu-btn round line-gray" data-id="{{v.id}}">取消订单</view>
+                <view bindtap="payFor" class="cu-btn round bg-green" data-id="{{v.id}}">立即支付</view>
+            </view>
+            <view class="pay-price solid-top" wx:if="{{v.is_cancel==1&&v.status==0}}">
+                <view bindtap="orderDel" class="cu-btn round line-gray" data-id="{{v.id}}">删除订单</view>
+            </view>
+        </view>
+    </view>
+    <view class="to-seed" wx:if="{{navbar==2}}">
+        <view bindtap="toSeedDetail" class="seed-ul" data-id="{{v.id}}" data-refund="{{v.is_refund}}" wx:for="{{order}}" wx:for-item="v">
+            <view class="name flex">
+                <text>{{v.land.land_name}}</text>
+                <text>{{v.spec.land_num}}</text>
+            </view>
+            <view class="seed-li flex" wx:if="{{v.wzz.length>0}}">
+                <text>待种植：</text>
+                <view class="cu-tag-view">
+                    <view class="cu-tag bg-grey light" wx:for="{{v.wzz}}">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="seed-li flex" wx:if="{{v.yzz.length>0}}">
+                <text>种植中：</text>
+                <view class="cu-tag-view">
+                    <view class="cu-tag bg-green light" wx:for="{{v.yzz}}">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="seed-li flex" wx:if="{{v.ycs.length>0}}">
+                <text>已成熟：</text>
+                <view class="cu-tag-view">
+                    <view class="cu-tag bg-orange light" wx:for="{{v.ycs}}">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="footer">
+                <view>
+                    <view>面积</view>
+                    <view style="color:#16BA63">{{v.spec.area}}㎡</view>
+                </view>
+                <view>
+                    <view>开始日期</view>
+                    <view>{{v.create_time}}</view>
+                </view>
+                <view>
+                    <view>过期日期</view>
+                    <view>{{v.deadline}}</view>
+                </view>
+            </view>
+            <text class="iconfont icon-yiwancheng over-icon" wx:if="{{v.is_confirm==1}}"></text>
+            <text class="iconfont icon-yituikuan refund-icon" wx:if="{{v.is_refund==1}}"></text>
+        </view>
+    </view>
+    <view class="seed-info" wx:if="{{navbar==3}}">
+        <view bindtap="toDetail" class="seed-ul" data-id="{{v.id}}" data-refund="{{v.is_refund}}" wx:for="{{order}}" wx:for-item="v">
+            <view class="name flex">
+                <text>{{v.land.land_name}}</text>
+                <text>{{v.spec.land_num}}</text>
+            </view>
+            <view class="pei-time text-gray" wx:if="{{v.is_confirm==1}}">下次配送时间：已完成</view>
+            <view class="pei-time text-gray" wx:else>下次配送时间：{{v.pei_time}}</view>
+            <view class="pei-time text-gray">最少配送次数：{{v.delivery_time}}次</view>
+            <view class="pei-time text-gray">已 配 送 次 数：{{v.pei_count}}次</view>
+            <view class="footer">
+                <view>
+                    <view>面积</view>
+                    <view style="color:#16BA63">{{v.spec.area}}㎡</view>
+                </view>
+                <view>
+                    <view>开始日期</view>
+                    <view>{{v.create_time}}</view>
+                </view>
+                <view>
+                    <view>过期日期</view>
+                    <view>{{v.deadline}}</view>
+                </view>
+            </view>
+            <text class="iconfont icon-yiwancheng over-icon" wx:if="{{v.is_confirm==1}}"></text>
+            <text class="iconfont icon-yituikuan refund-icon" wx:if="{{v.is_refund==1}}"></text>
+        </view>
+    </view>
+</view>
+<view class="none" wx:else>
+    <image src="../../../images/icon/none.png"></image>
+    <text class="tags">您还没有相关的订单</text>
+</view>
+<view style="width:100%;height:100rpx;"></view>

@@ -1,0 +1,177 @@
+page {
+    background: #f4f4f4;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+}
+
+.to-pay,.to-seed,.complete-info,.seed-info {
+    margin-top: 120rpx;
+}
+
+.pay-ul {
+    width: 90%;
+    margin: auto;
+    background: white;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    padding: 20rpx;
+}
+
+.title {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cont {
+    width: 100%;
+    height: 180rpx;
+    padding-bottom: 35rpx;
+}
+
+.cont image {
+    width: 280rpx;
+    height: 180rpx;
+    border-radius: 10rpx;
+}
+
+.cont-right {
+    margin-left: 20rpx;
+}
+
+.pay-price {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: right;
+}
+
+.pay-price .cu-btn {
+    margin-right: 20rpx;
+    margin-top: 10rpx;
+}
+
+.seed-ul {
+    width: 90%;
+    margin: auto;
+    padding: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    background: white;
+}
+
+.name {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #f4f4f4;
+}
+
+.pei-time {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1rpx solid #f4f4f4;
+}
+
+.footer {
+    width: 100%;
+    padding: 20rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 28rpx;
+    text-align: center;
+    color: #4d4d4d;
+}
+
+.footer view view:first-child {
+    color: #828282;
+    margin-bottom: 15rpx;
+}
+
+.seed-cond {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.seed-cond image {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+    padding: 20rpx 0 20rpx 0;
+    border-bottom: 1rpx solid #f4f4f4;
+}
+
+.seed-li {
+    padding: 20rpx 0 10rpx 0;
+}
+
+.cu-tag-view {
+    width: 70%;
+    padding-top: 20rpx;
+}
+
+.cu-tag-view .cu-tag {
+    margin-bottom: 20rpx;
+    margin-left: 0;
+    margin-right: 10rpx;
+}
+
+.seed-price {
+    width: 40%;
+    text-align: right;
+}
+
+.seed-name {
+    width: 50%;
+    margin-left: 20rpx;
+}
+
+.none {
+    width: 100%;
+    height: 300rpx;
+    text-align: center;
+}
+
+.none image {
+    width: 328rpx;
+    height: 200rpx;
+    margin-top: 260rpx;
+}
+
+.none .tags {
+    color: gray;
+    font-size: 24rpx;
+    display: block;
+}
+
+.over-icon {
+    position: absolute;
+    font-size: 100rpx;
+    color: red;
+    left: 73%;
+    margin-top: -410rpx;
+}
+
+.refund-icon {
+    position: absolute;
+    font-size: 100rpx;
+    color: #868686;
+    left: 73%;
+    margin-top: -410rpx;
+}
+
+.to-seed .over-icon {
+    position: absolute;
+    margin-top: -300rpx;
+}

@@ -1,0 +1,29 @@
+.cond {
+    width: 94%;
+    margin: auto;
+}
+
+.cu-timeline .cu-time {
+    font-size: 22rpx;
+}
+
+.img image {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 20rpx;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+}
+
+.add-state {
+    width: 70rpx;
+    height: 60rpx;
+    position: fixed;
+    border-radius: 50%;
+    font-size: 18rpx;
+    left: 85%;
+    top: 85%;
+    text-align: center;
+    padding-top: 10rpx;
+    box-shadow: 1rpx 4rpx 15rpx grey;
+}

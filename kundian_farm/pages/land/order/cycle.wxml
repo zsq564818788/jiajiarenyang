@@ -1,0 +1,41 @@
+<scroll-view scrollWithAnimation scrollX class="bg-white" scrollLeft="{{scrollLeft}}">
+    <view>
+        <view bindtap="changeCycle" class="cycle-li shadow {{item.id==currentCycle.id?'active-border':''}}" data-id="{{index}}" wx:for="{{cycle}}" wx:key="index">
+            <view class="cu-tag {{item.id==currentCycle.id?'active-tag':''}}">{{item.cycle}}</view>
+            <view>{{item.cycle}}/{{cycle.length}}</view>
+            <view class="status text-gray" wx:if="{{item.status==0}}">未开始</view>
+            <view class="status text-orange" wx:if="{{item.status==1}}">已发货</view>
+            <view class="status text-red" wx:if="{{item.status==2}}">已完成</view>
+        </view>
+    </view>
+</scroll-view>
+<view class="cond">
+    <view class="info-ul flex">
+        <view class="title">配送次数</view>
+        <view class="value">第{{currentCycle.cycle}}期/共{{cycle.length}}期</view>
+    </view>
+    <view class="info-ul flex" wx:if="{{currentCycle.status==0}}">
+        <view class="title">发货时间</view>
+        <view class="value" wx:if="{{currentCycle.delivery_time!=0}}">{{currentCycle.delivery_time}}</view>
+        <view class="value" wx:else>未定</view>
+    </view>
+    <view class="info-ul flex">
+        <view class="title">收货地址</view>
+        <view class="value" style="font-size:26rpx;line-height:30rpx;">{{currentCycle.address}}</view>
+    </view>
+    <view class="info-ul flex">
+        <view class="title">快递公司</view>
+        <view class="value" wx:if="{{currentCycle.status==0}}">未发货</view>
+        <view class="value" wx:else>{{currentCycle.express_company}}</view>
+    </view>
+    <view class="info-ul flex">
+        <view class="title">快递单号</view>
+        <view class="value" wx:if="{{currentCycle.status==0}}">未发货</view>
+        <view class="value" wx:else>{{currentCycle.express_no}}</view>
+    </view>
+</view>
+<view class="footer bg-white tabbar">
+    <form bindsubmit="sureGoods" reportSubmit="1">
+        <button class="cu-btn round line-gray button-hover" formType="submit" wx:if="{{currentCycle.status==1}}">确认收货</button>
+    </form>
+</view>

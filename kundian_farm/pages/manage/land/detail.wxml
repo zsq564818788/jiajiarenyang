@@ -1,0 +1,159 @@
+<view class="order-status">
+    <view class="bg-white padding">
+        <view class="cu-steps">
+            <view class="cu-item text-gray" style="color:{{bgColor}}">
+                <text class="num-1 num-blue" data-index="1" style="background:{{bgColor}};color:white;">1</text> 下单
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1?'num-blue':''}}" data-index="2" style="background:{{order.status==1?bgColor:''}};color:{{order.status==1?'white':'text-grey'}};">2</text> 付款
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1?'num-blue':''}}" data-index="3" style="background:{{order.status==1?bgColor:''}};color:{{order.status==1?'white':'text-grey'}};">3</text> 进行中
+            </view>
+            <view class="cu-item text-gray" style="color:{{order.status==1&&order.is_confirm==1?bgColor:''}}">
+                <text class="num-1 {{order.status==1&&order.is_confirm==1?'num-blue':''}}" data-index="4" style="background:{{order.status==1&&order.is_confirm==1?bgColor:''}};color:{{order.status==1&&order.is_confirm==1?'white':'text-grey'}};">4</text> 已完成
+            </view>
+        </view>
+    </view>
+</view>
+<view class="land-info">
+    <view bindtap="toCycle" class="cycle-title flex">
+        <view class="cycle-left">
+            <text class="iconfont icon-time"></text> 查看每期详情
+        </view>
+        <view class="cycle-right text-red">
+            剩余{{order.cycle_count}}期
+            <text class="iconfont icon-right f28"></text>
+        </view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">第{{order.cycle.cycle}}期</view>
+        <view wx:if="{{order.cycle.status==0}}">未开始</view>
+        <view wx:if="{{order.cycle.status==1}}">进行中</view>
+        <view wx:if="{{order.cycle.status==2}}">已完成</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递公司</view>
+        <view wx:if="{{order.cycle.status==0}}">未发货</view>
+        <view wx:else>{{order.cycle.express_company}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">快递单号</view>
+        <view wx:if="{{order.cycle.status==0}}">未发货</view>
+        <view wx:else>{{order.cycle.express_no}}</view>
+    </view>
+</view>
+<view class="land-info">
+    <view class="title">
+        <text class="iconfont icon-lanmanbiaoti"></text> 土地信息
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">土地名称</view>
+        <view>{{order.land.land_name}}（{{order.spec.land_num}}）</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">面积</view>
+        <view>{{order.spec.area}}㎡ 共{{order.delivery_time}}期</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">预计到期时间：</view>
+        <view>{{order.deadline}}</view>
+    </view>
+</view>
+<view class="land-info">
+    <view class="title">
+        <text class="iconfont icon-lanmanbiaoti"></text> 种植信息
+    </view>
+    <view class="seed-info flex" wx:for="{{order.seed}}">
+        <image class="seed-cover" src="{{item.cover}}"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="area">{{item.area}} ㎡</view>
+        <view class="status text-grey" wx:if="{{item.status==0}}">待播种</view>
+        <view class="status text-green" wx:if="{{item.status==1&&item.is_ripe==0}}">种植中</view>
+        <view class="status text-orange" wx:if="{{item.status==1&&item.is_ripe==1}}">已成熟</view>
+        <view bindtap="showSeed" class="detail" data-index="{{index}}">详情
+            <text class="iconfont icon-right"></text>
+        </view>
+    </view>
+</view>
+<view class="land-info">
+    <view class="title">
+        <text class="iconfont icon-lanmanbiaoti"></text> 订单信息</view>
+    <view class="order-ul flex">
+        <view class="text-gray">订单编号</view>
+        <view>{{order.order_number}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">创建时间</view>
+        <view>{{order.create_time}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">订单总价</view>
+        <view>￥{{order.total_price}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">支付时间</view>
+        <view>{{order.pay_time}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">支付方式</view>
+        <view>{{order.pay_method}}</view>
+    </view>
+    <view class="order-ul flex">
+        <view class="text-gray">商户订单号</view>
+        <view>{{order.uniontid}}</view>
+    </view>
+</view>
+<view style="width:100%;height:100rpx;"></view>
+<view class="cu-modal {{showSeed?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar justify-end">
+            <view class="content">{{currentSeed.name}}种植详情</view>
+            <view bindtap="showSeed" class="action">
+                <text class="iconfont icon-delete1 text-grey"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white deadline-txt">
+            <view class="s-li flex">
+                <text class="s-head">种植状态</text>
+                <view class="s-v" wx:if="{{currentSeed.status==0}}">未播种
+                    <text bindtap="plantNow" class="text-blue"> [立即播种]</text>
+                </view>
+                <view class="s-v" wx:if="{{currentSeed.status==1&&currentSeed.is_ripe==0}}">种植中
+                    <text bindtap="ripeNow" class="text-blue"> [已成熟]</text>
+                </view>
+                <text class="s-v" wx:if="{{currentSeed.status==1&&currentSeed.is_ripe==1}}">已成熟</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">播种时间</text>
+                <text class="s-v" wx:if="{{currentSeed.plant_time!=0}}">{{currentSeed.plant_time}}</text>
+                <text class="s-v" wx:else>未播种</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">种植天数</text>
+                <text class="s-v" wx:if="{{currentSeed.plant_day}}">{{currentSeed.plant_day}}天</text>
+                <text class="s-v" wx:else>0天</text>
+            </view>
+            <view class="s-li flex">
+                <text class="s-head">预计成熟时间</text>
+                <view class="s-v flex" wx:if="{{currentSeed.ripe_time!=0}}">{{currentSeed.ripe_time}}
+                    <picker bindchange="changeTime" mode="date" value="{{currentSeed.ripe_time}}">
+                        <view class="picker text-blue">
+                            [立即更新]
+                        </view>
+                    </picker>
+                </view>
+                <view class="s-v flex" wx:else>未定 
+                    <picker bindchange="changeTime" mode="date" value="{{time}}">
+                        <view class="picker text-blue">
+                            [立即更新]
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view bindtap="toStatus" class="to-info" data-plantid="{{currentSeed.id}}">新增状态信息更新
+                <text class="iconfont icon-right"></text>
+            </view>
+        </view>
+    </view>
+</view>

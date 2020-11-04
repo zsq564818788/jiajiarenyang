@@ -1,0 +1,169 @@
+<view class="cf474747 land_information">
+    <view class="land_title plt40">
+        <view>土地信息</view>
+    </view>
+    <view class="bgff plt40 flex bb">
+        <image class="iconlager" src="{{icon.selectIcon}}"></image>
+        <view class="ml30 f26">
+            <view>您已选择{{land.land_name}}</view>
+            <view class="cf767676 mt15">
+                <block wx:for="{{selectLand}}" wx:key="index">
+                    {{item.land_num}} {{item.area}}㎡
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="bgff plt30 flexSb">
+        <image class="iconlager" src="{{icon.lifeIcon}}"></image>
+        <picker bindchange="changeCycle" class="w500 f26 pick-w" range="{{cycle.alias}}" value="{{currentIndex}}">
+            <view>配送周期：{{cycle.alias[currentIndex]}}</view>
+        </picker>
+        <text bindchange="changeCycle" class="iconfont icon-right right-icon" style="margin-left:10rpx;"></text>
+    </view>
+</view>
+<view class="plt30 flexSb bgff coupon">
+    <view>
+        <text class="iconfont icon-youhuiquan1 f44" style="color:{{bgColor}};margin-left:10rpx"></text>
+        <text class="f26 new-tag">优惠券：</text>
+    </view>
+    <view bindtap="selectCoupon" class="f26 flex" wx:if="{{couponCount>0}}">
+        <view class="cfred" wx:if="{{userCoupon!=''}}">-￥{{userCoupon.coupon.coupon_price}}</view>
+        <view class="cfred" wx:else>{{couponCount}}张优惠券可用</view>
+        <text class="iconfont icon-right right-icon"></text>
+    </view>
+    <view class="f26 flex" wx:else>
+        <view class="cf93">暂无优惠券</view>
+    </view>
+</view>
+<view class="plt30 flexSb bgff coupon" wx:if="{{!selectSeed&&land.sow_status==0}}">
+    <view>
+        <text class="iconfont icon-shumiao f44" style="color:{{bgColor}};margin-left:10rpx"></text>
+        <text class="f26 new-tag">选择种子</text>
+    </view>
+    <view bindtap="selectSeed" class="f26 flex">
+        选择
+        <text class="iconfont icon-right right-icon"></text>
+    </view>
+</view>
+<view class="user_container" wx:if="{{selectSeed&&land.sow_status==0}}">
+    <view class="land_title plt40 flexSb">
+        <view>种子信息</view>
+        <view bindtap="selectSeed" class="f26 flex" style="height:50rpx;">
+            选择
+            <text class="iconfont icon-right right-icon"></text>
+        </view>
+    </view>
+    <view class="seed-li flex" wx:for="{{selectSeed}}">
+        <image src="{{item.cover}}"></image>
+        <view class="seed-name">{{item.send_name}}</view>
+        <view class="seed-price">￥{{item.price}} × {{item.selectCount}}㎡</view>
+    </view>
+</view>
+<view class="user_container cf474747 f26">
+    <view class="land_title plt40">
+        <view>收货信息</view>
+    </view>
+    <view bindtap="selectAdd" class="p20 flex" wx:if="{{address.address}}">
+        <view style="line-height:50rpx;width:94%;padding-top:15rpx;">
+            <text class="name" style="margin-right:50rpx;height:40rpx;">{{address.name}}</text>
+            <text class="phone">{{address.phone}}</text>
+            <view class="address" style="line-height:50rpx;height:auto">{{address.address}}</view>
+        </view>
+        <text class="iconfont icon-right"></text>
+    </view>
+    <view bindtap="selectAdd" class="p20 flex" wx:else>
+        <view style="line-height:50rpx;width:94%;">
+            <text class="iconfont icon-position1"></text> 选择收货地址
+        </view>
+        <text class="iconfont icon-right"></text>
+    </view>
+</view>
+<view class="user_container cf474747 f26">
+    <view class="land_title plt40">
+        <view>租赁人信息</view>
+    </view>
+    <view class="flex p20 borderbottom">
+        <view class="title">
+            <text class="iconfont icon-yonghu f34" style="color:{{bgColor}};margin-left:4rpx;"></text> 用户姓名</view>
+        <view class="ml20">
+            <input bindinput="inputUserName" placeholder="请输入用户姓名" type="text" value="{{userName}}"></input>
+        </view>
+    </view>
+    <view class="flex p20 borderbottom">
+        <view class="title">
+            <text class="iconfont icon-phone f40" style="color:{{bgColor}}"></text> 用户电话</view>
+        <view class="ml20" style="width:280rpx;">
+            <text>{{userTel}}</text>
+        </view>
+        <view class="ml20" wx:if="{{!userTel}}">
+            <button bindtap="changePhone" class="auth-btn" style="background:{{bgColor}}">授权手机号</button>
+        </view>
+        <view class="ml20" wx:if="{{userTel}}">
+            <button bindtap="changePhone" class="auth-btn" style="background:{{bgColor}}">更换手机号</button>
+        </view>
+    </view>
+    <view class="flex p20 borderbottom">
+        <label>
+            <checkbox catchtap="changeRules" checked="{{rules}}" class="radioBtn" color="#000"></checkbox> 我已阅读并同意
+        </label>
+        <text bindtap="farmRule" class="rule-book">《农场协议》</text>
+    </view>
+</view>
+<view style="width:100%;height:160rpx;"></view>
+<view class="footer f40 flexSb" style="padding-bottom:{{bottom}}rpx">
+    <view class="flex cffc8535 ml50">
+        <view class="f24 mt10" style="color:{{bgColor}}">￥</view>
+        <view style="color:{{bgColor}}">{{totalPrice}}</view>
+    </view>
+    <view class="zhif">
+        <view bindtap="costxq" class="detailed">明细</view>
+        <form bindsubmit="payFor">
+            <button class="right cu-btn round bg-green payFor" disabled="{{pay_text=='正在下单'}}" formType="submit" style="background: linear-gradient(to right, {{bgColor}}, {{assistColor}});">
+                立即支付
+            </button>
+        </form>
+    </view>
+</view>
+<view bindtap="costxq" class="mask" wx:if="{{iscostShow==false}}"></view>
+<view class="cost {{iscostShow?'hideServer':'showServer'}}">
+    <view class="cost_title">
+        <text></text>
+        <text>费用明细</text>
+        <text bindtap="costxq" class="iconfont icon-close"></text>
+    </view>
+    <view class="cost_cont plt40">
+        <view>在线支付
+            <text>￥{{totalPrice}}</text>
+        </view>
+        <view wx:if="{{userCoupon.coupon.coupon_price>0}}">
+            <text>土地￥{{copyTotalPrice}}</text>
+            <text wx:if="{{land.sow_status==0&&seedPrice>0}}">,种子 ￥{{seedPrice}}</text>
+            <text>,优惠金额-￥{{userCoupon.coupon.coupon_price}}</text>
+        </view>
+        <view wx:else>
+            <text>土地￥{{copyTotalPrice}}</text>
+            <text wx:if="{{land.sow_status==0&&seedPrice>0}}">，种子 ￥{{seedPrice}}</text>
+            <text>，优惠金额-￥0</text>
+        </view>
+        <view>
+            <view>土地租赁费用</view>
+            <view>￥{{copyTotalPrice}}</view>
+        </view>
+        <view wx:if="{{land.sow_status==0&&seedPrice>0}}">
+            <view>种子费用</view>
+            <view>￥{{seedPrice}}</view>
+        </view>
+        <view>
+            <view>优惠券抵用</view>
+            <view wx:if="{{userCoupon.coupon.coupon_price}}">-￥{{userCoupon.coupon.coupon_price}}</view>
+            <view wx:else>-￥0</view>
+        </view>
+        <view wx:if="{{discount_price>0}}">
+            <view>会员折扣价</view>
+            <view>-￥{{discount_price}}</view>
+        </view>
+    </view>
+    <form bindsubmit="payFor">
+        <button class="cost_sub" disabled="{{pay_text=='正在下单'}}" formType="submit" style="background: linear-gradient(to right, {{bgColor}}, {{assistColor}});">立即支付</button>
+    </form>
+</view>

@@ -1,0 +1,20 @@
+<view class="cond" wx:if="{{is_content}}">
+    <view class="cu-timeline" wx:for="{{state}}" wx:for-item="v">
+        <view class="cu-time">{{v.create_time}}</view>
+        <view class="cu-item">
+            <view class="content">{{v.txt}}
+                <view class="img">
+                    <image bindtap="previewImg" data-index="{{ind}}" data-key="{{index}}" src="{{item}}" wx:for="{{v.src}}" wx:for-index="ind"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="none" wx:else>
+    <image src="../../../images/icon/none.png"></image>
+    <text class="tags">您还没有相关的信息跟踪</text>
+</view>
+<view bindtap="toAdd" class="add-state bg-blue" style="background:{{bgColor}}" wx:if="{{is_add}}">
+    <view>新增</view>
+    <view>状态</view>
+</view>

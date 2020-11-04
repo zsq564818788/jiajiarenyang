@@ -1,0 +1,61 @@
+<view class="cond">
+    <view class="ul" wx:for="{{cycle}}" wx:for-item="v">
+        <text class="iconfont icon-yiwancheng" wx:if="{{v.status==2}}"></text>
+        <view class="head flex">
+            <text class="cu-tag bg-blue light">第{{v.cycle}}期</text>
+            <text>{{v.cycle_number}}</text>
+        </view>
+        <view class="userinfo">
+            <view class="user flex">
+                <view class="title">联系人</view>
+                <view>{{v.name}} {{v.phone}}</view>
+            </view>
+            <view class="address flex">
+                <view class="title">收货地址</view>
+                <view>{{v.address}}</view>
+            </view>
+        </view>
+        <view class="express flex" wx:if="{{v.status!=0}}">
+            <view class="title">快递信息</view>
+            <view>{{v.express_company}} {{v.express_no}}</view>
+        </view>
+        <view class="btn">
+            <view bindtap="showSend" class="cu-btn round bg-blue" data-id="{{index}}" wx:if="{{v.status==0}}">立即发货</view>
+            <view bindtap="confirm" class="cu-btn round line-blue" data-id="{{v.id}}" wx:if="{{v.status==1}}">确认收货</view>
+        </view>
+    </view>
+</view>
+<view style="width:100%;height:100rpx;"></view>
+<view class="cu-modal {{showSendModel?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar justify-end">
+            <view class="content">立即发货</view>
+            <view bindtap="hideModal" class="action">
+                <text class="iconfont icon-delete1 text-grey"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white">
+            <view class="cu-form-group margin-top">
+                <view class="title">快递公司</view>
+                <picker bindchange="pickerChange" range="{{express}}" value="{{index}}">
+                    <view>
+                        <text style="padding-right:20rpx;" wx:if="{{express_company}}">{{express_company}}</text>
+                        <text style="padding-right:20rpx;" wx:else>选择快递公司</text>
+                        <text class="iconfont icon-right"></text>
+                    </view>
+                </picker>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">快递单号</view>
+                <input bindinput="expressNo" placeholder="快递单号" value="{{express_no}}"></input>
+                <text bindtap="saoma" class="iconfont icon-saoma"></text>
+            </view>
+        </view>
+        <view class="cu-bar justify-end">
+            <view class="action">
+                <button bindtap="hideModal" class="cu-btn line-green text-green">取消</button>
+                <button bindtap="saveSend" class="cu-btn bg-green margin-left">立即发货</button>
+            </view>
+        </view>
+    </view>
+</view>
