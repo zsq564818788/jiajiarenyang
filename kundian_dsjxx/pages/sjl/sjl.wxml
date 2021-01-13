@@ -1,0 +1,9 @@
+<!--kundian_dsjxx//pages/sjl/sjl.wxml-->
+<view class="sjl">
+    <view class="sjl-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line06"  canvas-id="mychart-line06" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+        </view>
+    </view>   
+</view>

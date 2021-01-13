@@ -1,4 +1,4 @@
-<view wx:if="{{is_tarbar}}">
+<view wx:if="{{true}}">
     <tarbar SystemInfo="{{SystemInfo}}" list="{{tarbar}}" path="kundian_farm/pages/shop/Adopt/index"></tarbar>
 </view>
 <view style="padding-bottom:{{isIphoneX?'178':'110'}}rpx">

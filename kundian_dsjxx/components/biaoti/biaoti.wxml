@@ -1,0 +1,5 @@
+<!--components/biaoti/biaoti.wxml-->
+<view class="biaoti">
+    <image  src="../../status/images/dot.png" mode=""></image>
+    <view>{{name}}</view>
+</view>

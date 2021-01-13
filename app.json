@@ -57,6 +57,7 @@
         "kundian_farm/pages/shop/proList/index",
         "kundian_farm/pages/shop/AdoptRules/index",
         "kundian_farm/pages/shop/index/index",
+        "kundian_farm/pages/shop/classification/index",
         "kundian_farm/pages/shop/Group/orderList/index",
         "kundian_farm/pages/shop/Group/confrimOrder/index",
         "kundian_farm/pages/shop/Group/orderDetails/index",
@@ -162,6 +163,37 @@
                 "pages/store/detail/index",
                 "pages/store/list/index",
                 "pages/store/browse/index"
+            ]
+        },{
+            "root": "kundian_dsjxx/",
+            "pages": [
+                "pages/logs/logs",
+                "pages/jbxx/jbxx",
+                "pages/index/index",
+                "pages/spfx/spfx",
+                "pages/tdmj/tdmj",
+                "pages/zhxc/zhxc",
+                "pages/szjg/szjg",
+                "pages/dsjfx/dsjfx",
+                "pages/clfx/clfx",
+                "pages/zjzk/zjzk",
+
+                "pages/index01/index01",        
+                "pages/dtfx/dtfx",
+                "pages/fwly/fwly",
+                "pages/hxfx/hxfx",
+                "pages/hdzt/hdzt",
+                
+                "pages/index02/index02",
+                "pages/sjl/sjl",
+                "pages/gfy/gfy",
+                "pages/cjts/cjts",
+                "pages/dqrs/dqrs"
+        
+               
+                
+                
+                
             ]
         }
     ],

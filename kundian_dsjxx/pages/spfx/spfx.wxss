@@ -1,0 +1,53 @@
+/* pages/spfx/spfx.wxss */
+ec-canvas {
+    width: 100%;
+    height: 100%;
+  }
+.spfx .container{
+    padding: 0rpx;
+    width: 100%;
+    height: 400rpx;
+    position: relative;
+    justify-content: end;
+}
+#mychart-dom-graph{
+    position: relative;
+    width: 100%;
+}
+.mall-analysis-list{
+    display: block;
+}
+.mall-analysis-list{
+    padding-left: 12rpx;
+    margin-top: 8rpx;
+    display: flex;
+    width: 100%;
+}
+.mall-analysis-list .li{
+    height: 78rpx;
+    background-color: rgba(3, 66, 115, 0.5);
+    border: 2rpx solid #1380bd;
+    flex: 1;
+    padding: 5rpx;
+    margin-right: 18rpx;
+    position: relative;
+    text-align: center;
+}
+.mall-analysis-list .li image{
+    width: 6rpx;
+    height: 7rpx;
+    position: absolute;
+    left: -1rpx;
+    top: -2rpx;
+}
+
+.mall-analysis-list .li .li-title{
+    color: #f7fbfd;
+    font-size: 24rpx;
+    font-weight: 400;
+}
+.mall-analysis-list .li .li-content{
+    color: #ffde00;
+    font-size: 24rpx;
+    font-weight: 400;
+}

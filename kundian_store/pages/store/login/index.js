@@ -16,6 +16,7 @@ Page({
         submit_text: "立即登录"
     }, "setData", []),
     onLoad: function(n) {
+        console.log(t)
         var a = this, i = wx.getStorageSync("kundian_farm_wxInfo"), s = wx.getStorageSync("kundian_farm_setData"), r = wx.getStorageSync("storePhone" + t);
         r && void 0 != r ? wx.redirectTo({
             url: "../info/index?phone=" + r

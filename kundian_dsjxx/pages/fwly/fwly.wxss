@@ -1,0 +1,16 @@
+/* kundian_dsjxx//pages/fwly/fwly.wxss */
+.fwly{
+  height: 100%;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.fwly .container{
+  padding: 0rpx;
+  width: 100%;
+  height: 800rpx;
+  position: relative;
+  justify-content: end;
+  margin-top: 20rpx;
+}

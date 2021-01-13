@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "tarbar": "/components/tarbar/tarbar",
+    "cu-custom": "/colorui/components/cu-custom",
+    "biaoti": "../../components/biaoti/biaoti",
+    "jbxx":"../jbxx/jbxx",
+    "sjl":"../sjl/sjl",
+    "gfy":"../gfy/gfy",
+    "cjts":"../cjts/cjts",
+    "dqrs":"../dqrs/dqrs"
+  },
+  "navigationBarTitleText": "大数据信息分页二"
+}

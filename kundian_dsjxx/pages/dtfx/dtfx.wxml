@@ -1,0 +1,8 @@
+<!--kundian_dsjxx//pages/dtfx/dtfx.wxml-->
+<view class="dtfx">
+   <view class="dtfx-content">
+      <view class="container">
+        <ec-canvas id="mychart-dom-line11" canvas-id="mychart-line11" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+      </view>
+    </view>
+</view>

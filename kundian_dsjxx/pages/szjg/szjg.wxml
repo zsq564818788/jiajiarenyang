@@ -1,0 +1,34 @@
+<!--pages/szjg/szjg.wxml-->
+<view class="szjg">
+    <view class="title">数字化加工基地</view>
+    <view class="content">
+        <view class="left">
+            <view class="head">
+                <view class="li">
+                    <view class="li-title">粮食类占地</view>
+                    <view class="li-content">15亩</view>
+                </view>
+                <view class="li">
+                    <view class="li-title">水果类占地</view>
+                    <view class="li-content">20亩</view>
+                </view>
+                <view class="li">
+                    <view class="li-title">本年度增长</view>
+                    <view class="li-content">100亩</view>
+                </view>
+            </view>
+            <view class="con">
+                <view class="container">
+                    <ec-canvas id="mychart-dom-area03"  canvas-id="mychart-area03" ec="{{ ec }}" style="height:370rpx"></ec-canvas> 
+                </view>
+            </view>
+        </view>
+        <view class="right">
+            <view class="container">
+                <ec-canvas id="mychart-dom-area04"  canvas-id="mychart-area04" ec="{{ ec01 }}" style="height:600rpx"></ec-canvas> 
+            </view>
+            
+        </view>
+        
+    </view>
+</view>

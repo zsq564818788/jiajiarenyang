@@ -182,6 +182,11 @@ Page({
             }
         }), wx.stopPullDownRefresh();
     },
+    toDetail:function(a){
+        wx.navigateTo({   
+            url:"/kundian_dsjxx/pages/index/index"
+         })
+    },
     intoAdmin: function(a) {
         wx.navigateTo({
             url: "/kundian_farm/pages/manage/center/index"

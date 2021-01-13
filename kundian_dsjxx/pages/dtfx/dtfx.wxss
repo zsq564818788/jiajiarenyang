@@ -1,0 +1,19 @@
+/* kundian_dsjxx//pages/dtfx/dtfx.wxss */
+.dtfx{
+  height: 100%;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.dtfx .container{
+  padding: 0rpx;
+  width: 100%;
+  height: 600rpx;
+  position: relative;
+  justify-content: end;
+  margin-top: 20rpx;
+}
+.dtfx .hdzt-content{
+
+}

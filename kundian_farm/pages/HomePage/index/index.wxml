@@ -2,7 +2,7 @@
 <navigation bgColor="{{setData.nav_top_color}}" fontColor="{{setData.front_color}}" hidden="{{isBarHidden}}" isIphoneX="{{isIphoneX}}" istopShow="true" title="{{setData.bar_title}}"></navigation>
 <view wx:if="{{!loading}}" >
     <block wx:for="{{page}}" wx:key="index">
-        <view style="margin-top:{{statusBarHeight>25?'15':'0'}}rpx; position: relative;" wx:if="{{item.type=='banner'}}" >
+        <view style=" position: relative;" wx:if="{{item.type=='banner'}}" >
             <view style="background:#39b54a;height:{{item.swiperHeight/2}}px;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;">
                 <slide bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" focus="{{item.focus}}" focusColor="{{item.focusColor}}" id="slide" imgUrl="{{item.imgUrl}}" swiperHeight="{{item.swiperHeight}}" ></slide></view>
             <view  style="background:#fff;height:{{item.swiperHeight/2}}px;"></view>

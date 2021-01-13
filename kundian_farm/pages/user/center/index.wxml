@@ -212,6 +212,12 @@
                     <view>{{item.name}}</view>
                 </view>
             </view>
+            <view  bindtap="toDetail" class="item"  >
+                <view class="iconfont" style="height:54rpx;color:">
+                    <image class="" src="../../../images/icon/dashujv.png" mode="aspectFit" style="width:60rpx;height:54rpx;"></image>
+                </view>
+                <view>大数据信息</view>
+            </view>
         </view>
     </view>
     <view class="infoTop mt30" style="width:94%;" wx:if="{{is_admin==1}}">

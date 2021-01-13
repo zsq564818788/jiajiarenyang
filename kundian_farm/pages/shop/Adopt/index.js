@@ -42,9 +42,9 @@ Page({
                     Adopt: r,
                     currentImg: e,
                     showName: 1 == n.animal_name_show ? 1 : 0
-                }), wx.hideLoading();
+                })
             }
-        }), r.util.setNavColor(e);
+        }), r.util.setNavColor(e),wx.hideLoading();
     },
     cardSwiper: function(a) {
         var t = a.detail.current, r = this.data.Adopt;

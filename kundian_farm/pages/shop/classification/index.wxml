@@ -1,0 +1,41 @@
+<!--kundian_farm/pages/shop/classification/index.wxml-->
+  <!-- tabbar -->
+  <view>
+      <tarbar SystemInfo="{{SystemInfo}}" list="{{tarbar}}" path="kundian_farm/pages/shop/index/index"></tarbar>
+  </view>
+<view class="classification">
+  <view class="flexSb ptb10">
+      <input disabled bindtap="selectGoods" class="searchInput" placeholder="搜出您想要的" type="text"></input>
+      <text class="iconfont icon-search f44 search" style="color:gray;"></text>
+  </view>
+  <view class="content">
+    <scroll-view scroll-y="{{true}}" class="class-list">
+      <view>
+        <view  class="class-list-name {{index === typeDataIndex ? 'active':''}}"  wx:for="{{typeData}}" wx:key="*this" data-index="{{index}}" 
+        data-typeid="{{item.id}}" bindtap="intoGoodsList" >{{item.type_name}}</view>
+      </view>
+    </scroll-view >
+    
+    <scroll-view bindscrolltolower="loadMor" scroll-y="{{true}}" class="class-shop">
+       <view class="exchangeContent " >
+            <view bindtap="intoGoodsDetail" class="Content" data-goodsid="{{item.id}}" wx:for="{{recommendData}}" wx:key="*this">
+                <image class="Contentimage" src="{{item.cover}}"></image>
+                <view class="item_wrapper">
+                    <view class="f28 cf2b goods-name">{{item.goods_name}}</view>
+                    <view class="f28 mt10 flexSb">
+                        <view>
+                            <text class="fb">￥{{item.price}}</text>
+                            <text class="sale-count">{{item.sale_count}}人购买</text>
+                        </view>
+                        <text class="iconfont icon-shopcar f44" style="color:{{farmSetData.background_color}}"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+      
+    </scroll-view>
+
+  </view>
+
+  
+</view>

@@ -1,0 +1,9 @@
+<!--kundian_dsjxx//pages/fwly/fwly.wxml-->
+<view class="fwly">
+    <view class="fwly-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line10"  canvas-id="mychart-line10" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+        </view>
+    </view> 
+</view>

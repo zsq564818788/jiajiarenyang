@@ -11,7 +11,7 @@
             <image bindtap="intoDetailSlide" class="slide-image" data-index="{{index}}" data-linkparam="{{item.link_param}}" data-linktype="{{item.link_type}}" data-src="{{item}}" lazyLoad="true" src="{{item.slide_src}}"></image>
         </swiper-item>
     </swiper>
-    <view class="flexSb p20" wx:if="{{typeData.length<6}}">
+    <!-- <view class="flexSb p20" wx:if="{{typeData.length<6}}">
         <view class="items" wx:for="{{typeData}}" wx:key="id">
             <image bindtap="intoGoodsList" class="typesImg" data-typeid="{{item.id}}" data-urltype="{{item.url_type}}" src="{{item.icon}}"></image>
             <view>{{item.type_name}}</view>
@@ -22,6 +22,26 @@
             <image bindtap="intoGoodsList" class="typesImg" data-typeid="{{item.id}}" data-urltype="{{item.url_type}}" src="{{item.icon}}"></image>
             <view>{{item.type_name}}</view>
         </view>
+    </view> -->
+    <view class="block20"></view>
+    <view class="theMall">
+        <view class="theMall-view" style="border-right:2rpx solid #666">
+            <view  size="default" type="default" 
+                  bindtap='gotoPage' plain="true">
+                <image src="../../../images/icon/fenlei.png" mode="aspectFill"></image>
+                <view>商品分类</view>
+            </view>
+        </view> 
+        <view class="theMall-view">
+             <!-- <navigator url="/kundian_farm/pages/shop/Adopt/index" open-type="switchTab" >切换 Tab</navigator> -->
+            <view  size="default" type="default" bindtap='gotoAdoption' plain="true" data-path="kundian_farm/pages/shop/Adopt/index" 
+                >
+                <image src="../../../images/icon/renyang.png" mode="aspectFill"></image>
+                <view>前往认养</view>
+            </view>
+        </view> 
+        <!-- <button style="background:#69A84F;color:#fff" class="btn" size="mini"  bindtap='gotoPage'></button> 
+        <button style="background:#69A84F;color:#fff" class="btn" size="mini"  bindtap='gotoPage'>农场认养</button>  -->
     </view>
     <view class="block20"></view>
     <view>

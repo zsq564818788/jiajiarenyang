@@ -1,0 +1,90 @@
+<!-- 添加tabbar页面 -->
+<view >
+    <tarbar SystemInfo="{{SystemInfo}}" list="{{tarbar}}" path="kundian_farm/pages/user/center/index"></tarbar>
+</view>
+<view class="header" src="../../status/images/header-bg.png" >
+  <image class='background' src="../../status/images/bg.png" mode="aspectFill"></image>
+  <image class="header-back" src="../../status/images/header-bg.png" mode="aspectFit" ></image>
+  <!-- <view class="systime">{{time}}</view> -->
+  <view class="questions">233●DATA 全球乡村标识大数据中心</view>  
+</view>
+<view class="content">
+  <view class="home-total">
+    <!-- 标题开始 -->
+    <biaoti name="基本信息"></biaoti>
+    <!-- 标题结束 -->
+    <!-- 基本信息开始 -->
+    <jbxx></jbxx>
+    <!-- 基本信息结束 -->
+  </view>
+  <!-- 切换 -->
+  <view class="switching">
+    <view class="swiper-tab-item " bindtap="">
+      <image class="" src="../../status/images/bntactive.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text text01">切换一</view>
+    </view>
+    <view class="swiper-tab-item" bindtap="indexpage01">
+      <image class="" src="../../status/images/bnt.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text">切换二</view>
+    </view>
+    <view class="swiper-tab-item" bindtap="indexpage02">
+      <image class="" src="../../status/images/bnt.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text">切换三</view>
+    </view>
+  </view>
+    <!-- 切换1的页面 -->
+  <view class="mall-analysis">
+      <!-- 标题开始 -->
+      <biaoti name="一村一品商城分析"></biaoti>
+      <!-- 标题结束 -->
+      <!-- 商城分析开始 -->
+      <spfx></spfx>
+      <!-- 商城分析结束 -->
+  </view> 
+  <view class="country-analysis">
+    <view class="country-analysis-type">
+      <!-- 标题开始 -->
+      <biaoti name="智慧乡村覆盖分析"></biaoti>
+      <!-- 标题结束 -->
+      <!-- 地图开始 -->
+      <zhxc></zhxc>
+      <!-- 地图结束 -->
+    </view>
+  </view>
+  <view class="breeding-warning">
+      <!-- 标题开始 -->
+      <biaoti name="专家智库"></biaoti>
+      <!-- 标题结束 -->
+      <zjzk></zjzk>
+  </view>
+  <view class="analysis-data">
+      <!-- 标题开始 -->
+      <biaoti name="大数据库信息分析"></biaoti>
+      <!-- 标题结束 -->
+      <!-- 大数据库信息分析开始 -->
+      <dsjfx></dsjfx>
+      <!-- 大数据库信息分析结束 -->
+  </view>
+  <view class="personnel-structure">
+      <!-- 产量分析开始 -->
+      <clfx></clfx>
+      <!-- 产量分析结束 -->
+  </view>
+  <view class="department-staff">
+      <!-- 土地使用面积开始 -->
+      <tdmj></tdmj>
+      <!-- 土地使用面积结束 -->
+  </view>
+  <view class="crop-type">
+    <!-- 数字化加工基地开始 -->
+    <szjg></szjg>
+    <!-- 数字化加工基地结束 -->
+  </view> 
+</view>   
+   

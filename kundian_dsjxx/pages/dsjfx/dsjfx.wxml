@@ -1,0 +1,57 @@
+<!--pages/dsjfx/dsjfx.wxml-->
+<view class="dsjfx">
+    <view class="left">
+        <view class="top">
+            家禽养殖分析
+        </view>
+        <view class="con">
+            <view class="li">
+                <view class="li-title">1.牛</view>
+                <view class="li-content">0</view>
+            </view>
+            <view class="li">
+                <view class="li-title">2.羊</view>
+                <view class="li-content">0</view>
+            </view>
+            <view class="li">
+                <view class="li-title" >3.猪</view>
+                <view class="li-content" style="color:red;">0</view>
+            </view>
+            <view class="li">
+                <view class="li-title">4.鸡</view>
+                <view class="li-content">0</view>
+            </view>
+            <view class="li">
+                <view class="li-title">5.其他</view>
+                <view class="li-content">13</view>
+            </view>
+        </view>
+    </view>
+    <view class="right">
+        <view class="top">
+            家禽增长比例
+        </view>
+        <view class="con">
+            <view class="img img01">
+                <image src="../../status/images/cloud01.png" mode="aspectFit" style="width: 162rpx; height:162rpx"></image>
+                <view class="text01">牛</view>
+            </view>
+            <view class="img img02">
+                <image src="../../status/images/cloud02.png" mode="aspectFit" style="width: 130rpx; height:130rpx"></image>
+                <view class="text02">鸭</view>
+            </view>
+            <view class="img img03">
+                <image src="../../status/images/cloud03.png" mode="aspectFit" style="width: 190rpx; height:198rpx"></image>
+                <view class="text03">猪</view>
+            </view>
+            <view class="img img04">
+                <image src="../../status/images/cloud04.png" mode="aspectFit" style="width: 112rpx; height:112rpx"></image>
+                <view class="text04">鸡</view>
+            </view>
+            <view class="img img05">
+                <image src="../../status/images/cloud05.png" mode="aspectFit" style="width: 136rpx; height:136rpx"></image>
+                <view class="text05">羊</view>
+            </view>
+        </view>
+    </view>
+</view>

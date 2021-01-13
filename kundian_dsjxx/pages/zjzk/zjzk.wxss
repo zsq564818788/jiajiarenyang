@@ -1,0 +1,57 @@
+/* pages/zjzk/zjzk.wxss */
+.breeding-warning-title{
+    display: flex;
+    width: 97%;
+    padding: 5rpx 15rpx;
+}
+.breeding-warning-title view{
+    flex: 1;
+    color: white;
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 36rpx;
+    border-bottom: 4rpx solid #59ceff;
+    text-align: left;
+    padding: 0 10rpx;
+}
+.breeding-warning-title .t2{
+    text-align: center;
+}
+.breeding-warning-title .t3{
+    text-align: right;
+}
+.breeding-warning-list{
+    overflow: hidden;
+    height: 370rpx;
+    padding: 5rpx 15rpx;
+}
+.zjzk swiper{
+   height: 370rpx;
+}
+.zjzk swiper-item{
+    display: flex;
+    width: 100%;
+    height: 40rpx;
+    margin-top: -4rpx;
+}
+.zjzk swiper-item view{
+    flex: 1;
+    font-size: 24rpx;
+    font-weight: 400;
+    height: 37rpx;
+    line-height: 42rpx;
+    border-bottom: 2rpx dashed #457fc2;
+    padding: 0 10rpx;
+}
+.c1{
+    text-align: left;
+    color: #f7fbfd;
+}
+.c2{
+    text-align: center;
+    color: #07e5ff;
+}
+.c3{
+    text-align: right;
+    color: #ff6316; 
+}

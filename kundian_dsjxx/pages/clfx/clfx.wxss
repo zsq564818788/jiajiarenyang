@@ -1,0 +1,33 @@
+/* pages/clfx/clfx.wxss */
+ec-canvas{
+    width: 100%;
+    height: 100%;
+}
+.clfx{
+    width: 100%;
+    
+
+}
+.clfx .clfx-content{
+    padding: 0 30rpx;
+}
+.clfx .container{
+    padding: 0;
+    width: 100%;
+    height: 400rpx;
+    position: relative; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.title{
+    line-height: 1;
+    color: white;
+    font-size: 34rpx;
+    font-weight: 400;
+    padding-left: 35rpx;
+}

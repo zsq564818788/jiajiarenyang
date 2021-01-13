@@ -1,0 +1,80 @@
+<!-- 添加tabbar页面 -->
+<view >
+    <tarbar SystemInfo="{{SystemInfo}}" list="{{tarbar}}" path="kundian_farm/pages/user/center/index"></tarbar>
+</view>
+<view class="header" src="../../status/images/header-bg.png" >
+  <image class='background' src="../../status/images/bg.png" mode="aspectFill"></image>
+  <image class="header-back" src="../../status/images/header-bg.png" mode="aspectFit" ></image>
+  <!-- <view class="systime">{{time}}</view> -->
+  <view class="questions">233●DATA 全球乡村标识大数据中心</view>  
+</view>
+<view class="content">
+  <view class="home-total">
+      <!-- 标题开始 -->
+      <biaoti name="基本信息"></biaoti>
+      <!-- 标题结束 -->
+      <!-- 基本信息开始 -->
+      <jbxx></jbxx>
+      <!-- 基本信息结束 -->
+  </view>
+  <!-- 切换 -->
+  <view class="switching">
+    <view class="swiper-tab-item " bindtap="indexpage">
+      <image class="" src="../../status/images/bnt.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text ">切换一</view>
+    </view>
+    <view class="swiper-tab-item " bindtap="indexpage01">
+      <image class="" src="../../status/images/bnt.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text ">切换二</view>
+    </view>
+    <view class="swiper-tab-item " bindtap=''>
+      <image class="" src="../../status/images/bntactive.png" mode="aspectFit" lazy-load="false" binderror="" bindload="">
+        
+      </image>
+      <view class="text text01">切换三</view>
+    </view>
+  </view>
+
+    <!-- 切换3的页面 -->
+      <!-- <view class="sc-content sc-content1 " > -->
+      <!-- <view wx:if="{{currentTab===2}}"> -->
+        <view class="country-analysis">
+          <!-- 标题开始 -->
+          <biaoti name="采集数据量"></biaoti>
+          <!-- 标题结束 -->
+          <!-- 采集数据量开始 -->
+          <sjl></sjl>
+          <!-- 采集数据量结束 -->
+        </view> 
+        <view class="country-analysis">
+          <!-- 标题开始 -->
+          <biaoti name="各种费用"></biaoti>
+          <!-- 标题结束 -->
+          <!-- 各种费用开始 -->
+          <gfy></gfy>
+          <!-- 各种费用结束 -->
+        </view> 
+        <view class="country-analysis">
+          <!-- 标题开始 -->
+          <biaoti name="采集条数"></biaoti>
+          <!-- 标题结束 -->
+          <!-- 采集条数开始 -->
+          <cjts></cjts>
+          <!-- 采集条数结束 -->
+        </view> 
+        <view class="country-analysis" >
+          <!-- 标题开始 -->
+          <biaoti name="当前人数"></biaoti>
+          <!-- 标题结束 -->
+          <!-- 当前人数开始 -->
+          <dqrs></dqrs>
+          <!-- 当前人数结束 -->
+        </view> 
+
+</view>
+
+

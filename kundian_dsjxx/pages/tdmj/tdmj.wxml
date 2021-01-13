@@ -1,0 +1,11 @@
+<!--pages/tdmj/tdmj.wxml-->
+<view class="tdmj">
+    <view class="title">土地使用面积</view>
+    <view class="content">
+        <view class="container">
+            <ec-canvas id="mychart-dom-line02" canvas-id="mychart-line02" ec="{{ ec }}" style="height:350rpx"></ec-canvas>
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" ></ec-canvas>  -->
+        </view>
+    </view>
+    
+</view>

@@ -1,0 +1,11 @@
+<!--pages/clfx/clfx.wxml-->
+<view class="clfx">
+    <view class="title">产量分析</view>
+    <view class="clfx-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line13" canvas-id="mychart-line13" ec="{{ ec }}" style="height:400rpx"></ec-canvas>
+        </view>
+    </view>
+    
+</view>

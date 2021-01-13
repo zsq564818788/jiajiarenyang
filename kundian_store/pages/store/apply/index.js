@@ -92,10 +92,20 @@ Page({
                     title: "提示",
                     content: "您已入驻了，请直接登录",
                     showCancel: !1,
-                    success: function() {
-                        wx.redirectTo({
-                            url: "../login/index"
-                        });
+                    success: function(t) {
+                        var r;
+                        console.log(o.phone)
+                        if(o.phone){
+                            r = o.phone
+                            wx.redirectTo({
+                                url: "../info/index?phone=" + r
+                            });
+                        }else {
+                            wx.redirectTo({
+                                url: "../login/index"
+
+                            });
+                        }
                     }
                 });
             }
@@ -103,9 +113,9 @@ Page({
             url: "/kundian_farm/pages/login/index"
         });
     },
-    onShow: function() {
-        this.checkApply();
-    },
+    // onShow: function() {
+    //     this.checkApply();
+    // },
     chooseImage: function(t) {
         var o = this, a = t.currentTarget.dataset.type;
         if (1 != a) {
@@ -169,7 +179,7 @@ Page({
                     addressInfo: t
                 });
             }
-            // ,
+            // ,    
             // fail: function(t) {
             //     console.log(t), wx.showModal({
             //         title: "提示",
@@ -201,7 +211,6 @@ Page({
         if(w == undefined){
             w = y
         }
-        
         console.log(u)
         if ("" != g && void 0 != g) if ("" != d && void 0 != d) if ("" != c && void 0 != c) if ("" != f && void 0 != (void 0 === f ? "undefined" : t(f))) if ("" != r && void 0 != r) {
             var m = wx.getStorageSync("uid_" + o), x = "";

@@ -1,0 +1,8 @@
+/* pages/jbxx/jbxx.wxss */
+view .body-text{
+    color: #fff;
+    padding: 0 8rpx;
+    text-indent: 25rpx;
+    font-size: 24rpx;
+    margin: 2rpx 0;
+}

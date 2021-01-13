@@ -1,0 +1,16 @@
+/* kundian_dsjxx//pages/dqrs/dqrs.wxss */
+.dqrs{
+  height: 100%;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.dqrs .container{
+  padding: 0rpx;
+  width: 100%;
+  height: 800rpx;
+  position: relative;
+  justify-content: end;
+  margin-top: 20rpx;
+}

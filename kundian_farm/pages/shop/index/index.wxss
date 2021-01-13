@@ -163,3 +163,35 @@ page .wx-swiper-dot.wx-swiper-dot-active {
     color: #646464;
     margin-bottom: 15rpx;
 }
+.theMall{
+    display: flex;
+
+}
+.theMall-view{
+    flex: 1;
+    padding: 1% 10%;
+    
+}
+.theMall-view view{
+    font-size: 32rpx;
+    background:#fff;
+    color:#69A84F;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    /* height: 60rpx; */
+
+}
+.theMall-view view image{
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: 0 auto;
+    /* vertical-align:middle; */
+}
+.theMall-view view view{
+    vertical-align:sub;
+    padding-left: 10rpx;
+    text-align: center;
+    /* border-bottom: 2rpx dashed #979797; */
+}

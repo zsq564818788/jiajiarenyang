@@ -1,0 +1,74 @@
+/* pages/zhxc/zhxc.wxss */
+ec-canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .zhxc .top .container{
+    padding: 0;
+    width: 100%;
+    height: 400rpx;
+    position: relative; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .zhxc .top01 .container{
+    padding: 0;
+    width: 100%;
+    height: 400rpx;
+    position: relative; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .country-analysis-details{
+    background-color: rgba(6, 54, 91, 0.5);
+    border: 2rpx solid rgba(7, 166, 255, 0.76);
+    -webkit-box-shadow: inset 0 0 14rpx rgba(1, 192, 255, 0.28);
+    box-shadow: inset 0 0 14rpx rgba(1, 192, 255, 0.28);
+    margin-top: -15rpx;
+    margin-left: -1rpx;
+    padding: 12rpx;
+    width: 96.5%;
+    display: flex;
+  }
+  .notice_left{
+    width: 55%;
+    height: 33rpx;
+    /* overflow: hidden; */
+    position: relative;
+    font-size: 24rpx;
+    font-weight: 400;
+    color: white;
+    line-height: 36rpx;
+  }
+  .notice_right{
+    color: #fff;
+    margin-left: 12%;
+    font-size: 28rpx;
+    
+  }
+
+  .swiper-box{
+    /* position: relative; */
+    height: 33rpx;
+    line-height: 36rpx;
+    /* padding: 0 40rpx; */
+    /* background-color: #FFEBCD; */
+    /* overflow: hidden; */
+  }
+  .swiper-box .swiper-item{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+  }

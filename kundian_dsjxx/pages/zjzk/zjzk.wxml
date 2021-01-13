@@ -1,0 +1,26 @@
+<!--pages/zjzk/zjzk.wxml-->
+<view class="zjzk">
+    <view class="breeding-warning-title">
+        <view class="t1">种养类型</view>
+        <view class="t2">实际数据</view>
+        <view class="t3">增长率</view>
+    </view>
+    <view class="breeding-warning-list">
+        <view class="page-section page-section-spacing swiper">
+            <swiper display-multiple-items="10" vertical="{{true}}"  circular="{{true}}" autoplay="{{true}}" interval='1000'
+                 duration="5000">
+                <block wx:for="{{message}}" wx:key="*this">
+                <swiper-item>
+                    <!-- <view class="swiper-item {{item}}"></view> -->
+                    <view class="c1">{{item.species}}</view>
+                    <view class="c2">{{item.data}}</view>
+                    <view class="c3">{{item.gr}}</view>
+                </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+
+</view>
+<!-- vertical="false" autoplay="false"  circular="false" -->
+

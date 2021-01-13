@@ -15,6 +15,7 @@ Page({
             phone: o,
             setData: a
         }), t.util.setNavColor(t.siteInfo.uniacid), this.getStoreInfo();
+        console.log()
     },
     onShow: function(t) {
         this.getStoreInfo(), this.setData({
@@ -32,6 +33,7 @@ Page({
                 phone: a
             },
             success: function(t) {
+                console.log(t)
                 var e = t.data.store.remark.split(",");
                 o.setData({
                     store: t.data.store,

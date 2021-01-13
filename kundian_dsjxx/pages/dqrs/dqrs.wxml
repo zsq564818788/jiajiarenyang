@@ -1,0 +1,9 @@
+<!--kundian_dsjxx//pages/dqrs/dqrs.wxml-->
+<view class="dqrs">
+    <view class="dqrs-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line12"  canvas-id="mychart-line12" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+        </view>
+    </view> 
+</view>

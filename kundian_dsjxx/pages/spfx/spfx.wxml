@@ -1,0 +1,32 @@
+<!--pages/spfx/spfx.wxml-->
+<view class="spfx">
+    <view class="container">
+        <ec-canvas id="mychart-dom-graph05"    canvas-id="mychart-graph05" ec="{{ ec }}" style="height:400rpx"></ec-canvas>
+    </view>
+    <view>
+        <view class="mall-analysis-list">
+            <view class="li">
+                <view>
+                    <image src="../../status/images/mall-arrow.png"></image>
+                </view>
+                <view class="li-title">昨日成交量</view>
+                <view class="li-content">16笔</view>
+            </view>
+            <view class="li">
+                <view>
+                    <image src="../../status/images/mall-arrow.png"></image>
+                </view>
+                <view class="li-title">今日成交量</view>
+                <view class="li-content">24笔</view>
+            </view>
+            <view class="li">
+                <view>
+                    <image src="../../status/images/mall-arrow.png"></image>
+                </view>
+                <view class="li-title">总成交量</view>
+                <view class="li-content">40笔</view>
+            </view>
+        </view>
+    </view>
+</view>
+

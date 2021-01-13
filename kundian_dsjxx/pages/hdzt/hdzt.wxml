@@ -1,0 +1,11 @@
+<!--kundian_dsjxx//pages/hdzk/hdzk.wxml-->
+
+<view class="hdzt">
+    <view class="hdzt-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line08" canvas-id="mychart-line08" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+        </view>
+    </view>
+    
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品分类",
+  "usingComponents": {
+    "tarbar": "/components/tarbar/tarbar",
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

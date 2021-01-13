@@ -1,0 +1,79 @@
+/* pages/szjg/szjg.wxss */
+ec-canvas {
+    width: 100%;
+    height: 100%;
+  }
+.szjg .title{
+    line-height: 1;
+    color: white;
+    font-size: 34rpx;
+    font-weight: 400;
+    padding-left: 35rpx;
+}
+.szjg .content{
+  display: flex;
+}
+.szjg .left{
+  width: 37%;
+  margin-top: 20rpx;
+  flex: 1;
+  padding-left: 1%;
+  margin-left: 20rpx;
+}
+.szjg .right{
+  width: 60%;
+    height: 600rpx;
+    flex: 1.5;
+}
+.szjg .content{
+  width: 100%;
+  height: 550rpx;
+}
+.szjg .head .li{
+  width: 100%;
+  line-height: 60rpx;
+  color: #22ebfd;
+  font-size: 24rpx;
+  font-weight: 400;
+  display: flex;
+}
+.szjg .head .li .li-title{
+  flex: 2;
+  color: white;
+  font-size: 24rpx;
+}
+.szjg .head .li .li-content{
+  flex: 1;
+  font-size: 28rpx;
+}
+.szjg .con{
+  height: 370rpx;
+  /* position: relative; */
+  /* padding-top: 30rpx; */
+  width: 100%;
+  border-top: 4rpx solid #1acca8;
+  margin-top: 40rpx;
+}
+.szjg .left .container{
+  padding: 0;
+  width: 100%;
+  height: 370rpx;
+  position: relative; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.szjg .right .container{
+  padding: 0;
+  width: 100%;
+  height: 600rpx;
+  position: relative; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-between;
+  box-sizing: border-box;
+
+}

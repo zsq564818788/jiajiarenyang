@@ -1,0 +1,9 @@
+<!--kundian_dsjxx//pages/cjts/cjts.wxml-->
+<view class="cjts">
+    <view class="cjts-content">
+        <view class="container">
+            <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" style="height:400rpx"></ec-canvas> -->
+            <ec-canvas id="mychart-dom-line14"  canvas-id="mychart-line14" ec="{{ ec }}" style="height:800rpx"></ec-canvas>
+        </view>
+    </view> 
+</view>

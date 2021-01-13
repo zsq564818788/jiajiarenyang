@@ -1,0 +1,40 @@
+<!--pages/zhxc/zhxc.wxml-->
+<view class="zhxc">
+  <view class="top">
+    <view class="container">
+      <ec-canvas id="mychart-dom-area01" canvas-id="mychart-area01" ec="{{ ec }}" style="height:400rpx"></ec-canvas>
+    </view>
+  </view>
+  <view class="top01">
+    <view class="container">
+      <ec-canvas id="mychart-dom-area"  canvas-id="mychart-area" ec="{{ ecnmg }}" style="height:400rpx"></ec-canvas>
+    </view>
+  </view>
+  <view class="country-analysis-details">
+    <view class="notice_left">
+      <view >
+        <!-- <swiper class='swiper-box' autoplay="{{true}}" interval="2000"  vertical="{{true}}" circular="{{true}}"> -->
+          <swiper class="swiper-box" vertical="true" autoplay="true" circular="true" interval="3000">
+          <block wx:for="{{msgList}}" wx:key="*this">
+            <swiper-item>
+              <view class="swiper-item">
+                当月系统入驻<text class="in" style="color: green;">{{item.sysrz}}</text>人,当月认证人口<text class="out" style="color: red;">{{item.rz}}</text>人
+              </view>
+              <!-- <view class="swiper-item">
+                当月系统覆盖<text class="in" style="color: green;">26</text>镇,当月系统覆盖<text class="out" style="color: green;">2</text>村
+              </view>
+              <view class="swiper-item">
+                当月系统覆盖<text class="in" style="color: green;">26</text>镇,当月系统覆盖<text class="out" style="color: green;">2</text>村
+              </view>
+              <view class="swiper-item">
+                当月系统覆盖<text class="in" style="color: green;">26</text>镇,当月系统覆盖<text class="out" style="color: green;">2</text>村
+              </view> -->
+            </swiper-item>
+          </block>
+        </swiper>
+    </view>
+    </view>
+    <view class="notice_right">总入驻人口：25人</view>
+    <view style="clear: both;"></view>
+  </view>
+</view>

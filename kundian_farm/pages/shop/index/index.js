@@ -68,16 +68,32 @@ Page({
             user_uid: s
         }));
     },
-    intoGoodsList: function(a) {
-        var t = a.currentTarget.dataset, e = t.typeid;
-        t.urltype;
-        wx.navigateTo({
-            url: "../proList/index?type_id=" + e
-        });
-    },
+    // intoGoodsList: function(a) {
+    //     var t = a.currentTarget.dataset, e = t.typeid;
+    //     t.urltype;
+    //     wx.navigateTo({
+    //         url: "../proList/index?type_id=" + e
+    //     });
+    // },
     selectGoods: function(a) {
         wx.navigateTo({
             url: "../search/index"
+        });
+    },
+    // 商品分类跳转页面
+    gotoPage:function(a) {
+        console.log(a)
+        wx.navigateTo({
+            url: "../classification/index"
+        });
+    },
+    // 认养跳转页面
+    gotoAdoption : function(a){
+        console.log("认养")
+        wx.reLaunch({
+            url: "../Adopt/index",
+            // url: "/kundian_farm/pages/shop/Adopt/index",
+            
         });
     },
     intoGoodsDetail: function(a) {
