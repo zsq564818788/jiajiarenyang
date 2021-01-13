@@ -19,6 +19,7 @@ Page({
         storeConfig: []
     },
     onLoad: function(t) {
+        console.log(t)
         var o = wx.getStorageSync("kundian_farm_setData");
         this.setData({
             setData: o
@@ -42,6 +43,7 @@ Page({
                 type: "store_apply"
             },
             success: function(e) {
+                console.log(e)
                 t.setData({
                     storeConfig: e.data.config
                 });
@@ -166,14 +168,15 @@ Page({
                 e.setData({
                     addressInfo: t
                 });
-            },
-            fail: function(t) {
-                console.log(t), wx.showModal({
-                    title: "提示",
-                    content: "无法打开地址",
-                    showCancel: !1
-                });
             }
+            // ,
+            // fail: function(t) {
+            //     console.log(t), wx.showModal({
+            //         title: "提示",
+            //         content: "无法打开地址",
+            //         showCancel: !1
+            //     });
+            // }
         });
     },
     delImg: function(t) {
@@ -188,7 +191,18 @@ Page({
         });
     },
     submitData: function(n) {
-        var i = this, s = n.detail.value, d = s.name, c = s.phone, r = s.intro, l = n.detail.formId, u = i.data, p = u.tmpPhoto, f = u.addressInfo, g = u.logo, h = u.store, w = u.storeConfig;
+        console.log(n)
+        console.log(this)
+        var y={
+            "store_pay_in": 0,
+            "store_pay_price": 1
+        };
+        var i = this, s = n.detail.value, d = s.name, c = s.phone, r = s.intro, l = n.detail.formId, u = i.data, p = u.tmpPhoto, f = u.addressInfo, g = u.logo, h = u.store, w = u.storeConfig ;
+        if(w == undefined){
+            w = y
+        }
+        
+        console.log(u)
         if ("" != g && void 0 != g) if ("" != d && void 0 != d) if ("" != c && void 0 != c) if ("" != f && void 0 != (void 0 === f ? "undefined" : t(f))) if ("" != r && void 0 != r) {
             var m = wx.getStorageSync("uid_" + o), x = "";
             p.length > 0 && (x = p.join(",")), 1 != w.store_pay_in || 0 == w.store_pay_price || h.id ? wx.request({
@@ -236,8 +250,10 @@ Page({
                     latitude: f.latitude
                 },
                 success: function(t) {
+                    console.log(t)  
                     if (0 == t.data.code) {
                         var n = t.data.order_id, s = e.util.getNewUrl("entry/wxapp/pay", "kundian_farm_plugin_store");
+                        console.log(e)
                         wx.request({
                             url: s,
                             data: {
@@ -248,6 +264,8 @@ Page({
                             },
                             cachetime: "0",
                             success: function(t) {
+                                console.log(t)
+                                console.log("2222"+t.data && t.data.data && !t.data.errno +"")
                                 if (t.data && t.data.data && !t.data.errno) {
                                     var e = t.data.data.package;
                                     wx.requestPayment({
@@ -257,6 +275,7 @@ Page({
                                         signType: "MD5",
                                         paySign: t.data.data.paySign,
                                         success: function(t) {
+                                            console.log(t)
                                             wx.showLoading({
                                                 title: "加载中"
                                             }), wx.request({
@@ -269,6 +288,7 @@ Page({
                                                     prepay_id: e
                                                 },
                                                 success: function(t) {
+                                                    console.log(t)
                                                     wx.showModal({
                                                         title: "提示",
                                                         content: "支付成功",
@@ -285,6 +305,7 @@ Page({
                                             });
                                         },
                                         fail: function(t) {
+                                            console.log(t)
                                             wx.showModal({
                                                 title: "提示",
                                                 content: "您取消了支付",
