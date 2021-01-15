@@ -13,7 +13,9 @@ Component({
             value: 1
         }
     },
-    data: {},
+    data: {
+        url: "kundian_farm/pages/shop/prodeteils/index?goodsid=110"
+    },
     methods: {
         navToPage: function(a) {
             var e = a.currentTarget.dataset.linktype, n = a.currentTarget.dataset.linkparam;
@@ -30,7 +32,7 @@ Component({
             }) : 4 == e ? wx.navigateTo({
                 url: "/kundian_farm/pages/HomePage/live/index"
             }) : 5 == e ? n ? wx.navigateTo({
-                url: "/kundian_farm/pages/shop/prodeteils/index?goodsid=" + n
+                url: "/kundian_farm/pages/shop/prodeteils/index?goodsid=" + n    
             }) : wx.navigateTo({
                 url: "/kundian_farm/pages/shop/index/index"
             }) : 6 == e ? n ? wx.navigateTo({
@@ -74,11 +76,17 @@ Component({
                         appId: i
                     });
                 }
-                n ? wx.navigateTo({
-                    url: "/" + n
-                }) : (console.log(e), wx.navigateTo({
-                    url: "/" + e
-                }));
+                if(n == this.data.url){
+                    wx.navigateTo({
+                        url: "/kundian_farm/pages/HomePage/villagevolunteers/index" 
+                    })
+                }else{
+                    n ? wx.navigateTo({
+                            url: "/" + n
+                    }) : (console.log(e), wx.navigateTo({
+                        url: "/" + e
+                    }));
+                }   
             }
         },
         checkNum: function(a) {

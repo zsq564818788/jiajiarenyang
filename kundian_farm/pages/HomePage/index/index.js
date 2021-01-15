@@ -21,6 +21,8 @@ Page({
         showView: !1
     },
     onLoad: function(e) {
+        console.log(this)
+        console.log(a)
         var r = this, n = wx.getStorageSync("kundian_farm_setData"), i = wx.getStorageSync("kundianFarmTarbar");
         i && n ? a.util.setNavColor(t) : r.getMusic().then(function(e) {
             var i = e.data, o = i.tarbar, s = i.farmSetData;

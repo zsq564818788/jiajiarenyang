@@ -35,6 +35,7 @@
         "kundian_farm/pages/HomePage/about/index",
         "kundian_farm/pages/HomePage/weather/index",
         "kundian_farm/pages/HomePage/live/index",
+        "kundian_farm/pages/HomePage/villagevolunteers/index",
         "kundian_farm/pages/shop/VeterinaryIntroduce/index",
         "kundian_farm/pages/shop/prodeteils/index",
         "kundian_farm/pages/user/confirmOrder/index",

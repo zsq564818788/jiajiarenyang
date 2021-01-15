@@ -1,0 +1,2 @@
+<view class="container">乡村志愿者</view>
+<button bindtap="subOrder">我要成为志愿者</button>
