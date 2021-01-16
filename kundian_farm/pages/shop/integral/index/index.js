@@ -74,6 +74,7 @@ Page({
                 uniacid: e
             },
             success: function(a) {
+                console.log(a)
                 if (1 == a.data.code) {
                     wx.showToast({
                         title: "签到成功"

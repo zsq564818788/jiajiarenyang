@@ -26,6 +26,7 @@ Page({
         discount: 0
     },
     onLoad: function(t) {
+        console.log(this)
         var o = this, s = e.bgColor, i = t.goodsid, r = t.spec_id, d = t.cart_id, n = t.count, c = wx.getStorageSync("uid_" + a), u = wx.getStorageSync("kundian_farm_setData"), p = 1;
         2 == u.recovery_method && (p = 2), o.setData({
             recovery_method: p,
@@ -196,12 +197,15 @@ Page({
                 formId: t.detail.formId,
                 discount: h
             };
+            console.log(P)
             this.setData({
                 pay_text: "正在下单"
             }), e.util.request({
                 url: "entry/wxapp/class",
                 data: P,
                 success: function(t) {
+                    console.log(e)
+                    console.log(t)
                     if (1 == t.data.code) {
                         var s = t.data.order_id;
                         o.setData({
@@ -266,6 +270,7 @@ Page({
                                 } else console.log("fail1");
                             },
                             fail: function(e) {
+                                console.log(e)
                                 "JSAPI支付必须传openid" == e.data.message ? wx.navigateTo({
                                     url: "/kundian_farm/pages/login/index"
                                 }) : wx.showModal({

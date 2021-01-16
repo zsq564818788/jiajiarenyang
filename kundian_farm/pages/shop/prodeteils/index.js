@@ -238,6 +238,9 @@ Page({
     },
     sureGoods: function(t) {
         var o = this.data, a = o.goodsid, s = o.goodsData, i = o.spec_id, n = o.count, c = o.specVal, d = wx.getStorageSync("uid_" + e);
+        console.log(a)
+        console.log(i)
+        console.log(n)
         if (0 != d && void 0 != d) if (1 == s.is_open_sku) {
             if ("" == i && 0 == i.length) return wx.showToast({
                 title: "请选择规格",
@@ -283,6 +286,7 @@ Page({
                 title: "请选择规格",
                 icon: "none"
             }), !1;
+            console.log(i)
             d.count >= c ? o.util.request({
                 url: "entry/wxapp/class",
                 data: {
@@ -295,6 +299,7 @@ Page({
                     uid: r
                 },
                 success: function(t) {
+                    console.log(t)
                     1 == t.data.code ? (wx.showToast({
                         title: "已加入购物车",
                         icon: "none"
